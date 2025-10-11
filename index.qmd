@@ -1,0 +1,42 @@
+---
+title: "Overview"
+---
+
+# Overview
+
+I am aiming to provide a clear and instructive analysis to Sr Leadership, mixing both written prose and visuals to provide an artifact for later viewing as well as a tool to center the conversation for a decision. I will start with the high level recommendation and then provide the steps for how we get there, knowing that depending on the leader's availability, sometimes there is only time for the analysis and sometimes it's desired to know how we got to the answer.
+
+I have intentionally designed this to be a code driven analysis in order to ensure that both the analysis is reproducible as well as that the code is reusable. It's has been a common occurance for me where I have provided an analysis, we've made a decision and then a year later we want to evaluate the results. By this solution beig code based, we are able to quickly recreate the analysis and update with the necessary data without having to wonder if some data was omited due to outliers or if we intentionally just focused on a specific population.
+
+::: panel-tabset
+## Problem Statement:
+
+You are a Senior HR Data & Insights Consultant and have been asked to assist senior HR leadership make a decision regarding a planned policy change.
+
+1.  Senior leadership is concerned with the on-going impact the pandemic and “Great Resignation” has had on the workforce. There is a pervasive belief that turnover has been steadily on the rise over the past five years, and recent high-profile terminations among some of the organization’s top performers have raised questions regarding the organization’s retention strategy.
+2.  Senior leaders believe compensation is driving turnover and have proposed implementing an across the board annual raise of 6% at the start of next year to counteract the effect of inflation.
+3.  You have one week to clean, review, and analyze the provided data to help senior leadership understand the current turnover landscape, the cost of their
+
+## Data Soures
+
+For this analysis we will be using the following data sources:
+
+-   HRIS Data - Employee tenure and Demographics
+-   HRIS Data - Employee Survey Response
+-   BLS - JOLTS
+-   BLA - Inflation (Consumer Price Index)
+-   [Michigan Job](https://www.milmi.org/)
+-   [Michigan Workforce Reports](https://www.michigan.gov/mdcs/quick-links/workforcereports)
+
+## Assumptions
+
+-   HRIS Data
+    -   Assuming that the majority of employees are Michigan residents
+
+## Goals
+
+-   Detailing what the current turnover rate is
+-   Detailing if there are certain groups with higher turnover
+-   Determine if the higher turnover is correlated to the responses in the employee engagement survey
+-   Would a 6% raise even impact the cost of living due to inflation?
+:::

@@ -1,0 +1,33 @@
+project:
+  type: website
+
+website:
+  title: "Employee Turnover Analysis"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: survey.qmd
+        text: Survey Reponses
+      - href: turnover.qmd
+        text: Turnover Details
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            href:  https://code.com
+          - text: Report a Bug
+            href:  https://bugs.com
+
+
+format:
+  html:
+    theme:
+      - brand
+    css: styles.css
+    toc: true
+    # fontcolor: "#333333"
+    linkcolor: "#007bff"
+
+
+
