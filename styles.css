@@ -1,1 +1,12 @@
 /* css styles */
+
+/* Example: Change active tab background and text color */
+.nav-tabs .nav-link.active {
+    background-color: #eb0028; /* jackson read background */
+    color: white; /* White text */
+}
+
+/* Example: Change tab content border color */
+.tab-content {
+    border-color: #5a2158;
+}
