@@ -1,0 +1,17 @@
+{
+  "hash": "34bf8117b56eb569975e8ffb0e40afe0",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Turnover\"\n---\n\nThis is where we will provide a more detail view into the turnover both at Jackson as well as provide a larger view of how this organization is relative to the state wide view as well as the nationwide view.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](turnover_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "turnover_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

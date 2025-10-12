@@ -16,6 +16,7 @@ I have intentionally designed this to be a code driven analysis in order to ensu
 Because this presentation is meant for Sr Leadership I have intentionally removed most code, except for situations where it would be instructive or in more of of the detailed appendix. If you would like to review the code, please visit the code repository on Github by clicking on the icon on the top right and navigating to the "Source Code" link. 
 
 Thanks for following along!
+
 -phil walker
 
 # Analysis Overview

@@ -9,6 +9,8 @@ This is a space where we'd be interested to tease out the difference's between d
 
 ```{r}
 #| echo: false
+#| warning: false
+#| error: false
 library(tidyverse)
 theme_set(theme_bw())
 jcolor <- c("#5a2158", "#983560", "#cb575e", "#ee8757", "#febe57", "#f9f871")
@@ -20,7 +22,12 @@ surv |>
   ggplot(aes(Response))+
   geom_bar(stat = "count", aes(fill = Year), position = "dodge")+
   scale_fill_manual(values = jcolor) +
-  facet_wrap(Question_Type ~ .)
+  facet_wrap(Question_Type ~ .)+
+  labs(title = "Count of Responses by Year for each survey group") + 
+  theme(
+    panel.background = element_rect(fill = "#F8F5F5"),
+    plot.background = element_rect(fill = "#F8F5F5")
+  )
 
 ```
 
