@@ -1,5 +1,9 @@
 ---
 title: "Turnover"
+format:
+  html:
+    fig-width: 10
+    fig-height: 6
 ---
 
 This is where we will provide a more detail view into the turnover both at Jackson as well as provide a larger view of how this organization is relative to the state wide view as well as the nationwide view.
@@ -23,6 +27,15 @@ exit <-
   summarise(exits = n()) |> 
   ungroup()
 
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| out-width: "100%"
+#| out-height: "40%"
+#| fig-align: center
 exit |> 
   filter(Term_Month < as.Date("2025-10-01")) |> 
     filter(Term_Month >= as.Date("2018-01-01")) |> 
@@ -38,5 +51,30 @@ exit |>
     plot.background = element_rect(fill = "#F8F5F5")
   )
 
-
 ```
+
+We see that there was a spike in early 2022, and then the count of exits hit a steady state for the year. Then again in 2023 there was a spike in exits with it hitting another steady state.
+
+It looks like the exits have returned to roughly pre-pandemic levels in 2024 going forward.
+
+
+# Analysis Overview
+
+::: panel-tabset
+## Exits:
+
+What population is seeing the largest impact?
+
+## Voluntary vs Involuntary
+
+
+
+## Turnover rate
+
+- Calculations
+
+
+## Next Steps
+
+-   Detailing the current tur
+:::

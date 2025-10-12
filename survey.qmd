@@ -1,5 +1,9 @@
 ---
 title: "Survey Responses"
+format:
+  html:
+    fig-width: 8
+    fig-height: 6
 ---
 
 This is where we will provide an analysis into the survey responses in order to determine if we see a correlation between survey responses and the ultimately the employee's decision to leave the company or not
@@ -26,7 +30,9 @@ surv |>
   labs(title = "Count of Responses by Year for each survey group") + 
   theme(
     panel.background = element_rect(fill = "#F8F5F5"),
-    plot.background = element_rect(fill = "#F8F5F5")
+    plot.background = element_rect(fill = "#F8F5F5"),
+    legend.background = element_rect(fill = "#F8F5F5"),
+    legend.key = element_rect(fill = "#F8F5F5", color = "darkgrey")
   )
 
 ```
