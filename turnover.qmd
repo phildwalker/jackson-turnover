@@ -6,6 +6,9 @@ format:
     fig-height: 6
 ---
 
+
+# Trend of Exits 
+
 This is where we will provide a more detail view into the turnover both at Jackson as well as provide a larger view of how this organization is relative to the state wide view as well as the nationwide view.
 
 ```{r}
@@ -57,7 +60,6 @@ We see that there was a spike in early 2022, and then the count of exits hit a s
 
 It looks like the exits have returned to roughly pre-pandemic levels in 2024 going forward.
 
-
 # Analysis Overview
 
 ::: panel-tabset
@@ -67,12 +69,9 @@ What population is seeing the largest impact?
 
 ## Voluntary vs Involuntary
 
-
-
 ## Turnover rate
 
-- Calculations
-
+-   Calculations
 
 ## Next Steps
 

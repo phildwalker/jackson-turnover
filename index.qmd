@@ -1,5 +1,8 @@
 ---
 title: "Overview"
+format:
+  html:
+    title-block-banner: false # or none
 ---
 
 ```{r}
@@ -51,6 +54,9 @@ For this analysis we will be using the following data sources:
 - We are extracting part time employees from the population as we would expect the turnover rate to be different for these populations
 
 - We recognize that there have been a large economic shift where more employees are staying at their companies, if we were to make a policy change we would want to differentiate between (and look for a causal link) between the policy and the company's turnover.
+
+- Identify top performers as: 
+    * those with a performance rating of 4 or 5
 
 
 ## Goals

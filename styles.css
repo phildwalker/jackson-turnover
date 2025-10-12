@@ -10,3 +10,7 @@
 .tab-content {
     border-color: #5a2158;
 }
+
+.quarto-title > h1.title {
+  display: none !important;
+}
