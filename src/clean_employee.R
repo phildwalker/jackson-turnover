@@ -3,7 +3,9 @@
 options(scipen = 999)
 library(tidyverse)
 theme_set(theme_bw())
+jcolor <- c("#5a2158", "#983560", "#cb575e", "#ee8757", "#febe57", "#f9f871")
 
+source(here::here("src", "monthly_employee.R"))
 
 employee <- readxl::read_xlsx(here::here("data", "Senior HR Data & Insights Consultant - Work Sample - HRIS Data.xlsx"))
 
@@ -59,7 +61,35 @@ emp_dates <-
 
 saveRDS(emp_dates, file = here::here("data", "employee_dates.RDS"))
 
+#---- exit by month
 
-month_data <- c()
+exit <-
+  emp_dates |> 
+  count(Term_Month)
 
 
+#---------- 
+
+month_trend <- emp_dates |> 
+  # head(10) |> 
+  rename(start_date = Hire_Date,
+        end_date = CleanEnd) |> 
+  select(employee_id = ID, start_date, end_date) |> 
+  create_monthly_activity() |> 
+  left_join( , y= emp_clean |> select(ID, Time_Type), 
+      by = join_by(employee_id == ID)) |> 
+  group_by(month, Time_Type) |> 
+  summarise(active_employee = n()) |> 
+  ungroup()
+
+
+
+month_trend |> 
+  filter(month >= as.Date("2018-01-01")) |> 
+  ggplot(aes(month, active_employee, color = Time_Type))+
+    geom_point()+
+    geom_line()+
+  scale_x_date(date_breaks = "6 month", date_labels = "%m-%Y") + 
+  scale_color_manual(values = jcolor) +
+  labs(title = "Count of Active Employees By Month",
+    x = NULL, y= NULL)

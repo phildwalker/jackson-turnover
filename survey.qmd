@@ -7,3 +7,21 @@ This is where we will provide an analysis into the survey responses in order to 
 
 This is a space where we'd be interested to tease out the difference's between different demographics and whether or not their responses are indicitive of different behaviors.
 
+```{r}
+#| echo: false
+library(tidyverse)
+theme_set(theme_bw())
+jcolor <- c("#5a2158", "#983560", "#cb575e", "#ee8757", "#febe57", "#f9f871")
+
+surv <- readRDS(file = here::here("data", "survey_long.RDS"))
+
+
+surv |> 
+  ggplot(aes(Response))+
+  geom_bar(stat = "count", aes(fill = Year), position = "dodge")+
+  scale_fill_manual(values = jcolor) +
+  facet_wrap(Question_Type ~ .)
+
+```
+
+We see a shift in responses from more negative in 2021 -> more positive in 2025

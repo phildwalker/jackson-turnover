@@ -134,8 +134,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#note-from-phil" id="toc-note-from-phil" class="nav-link active" data-scroll-target="#note-from-phil">Note from Phil</a></li>
+  <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link" data-scroll-target="#analysis-overview">Analysis Overview</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -159,8 +166,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Presentation last built on: 2025-10-12</code></pre>
+</div>
+</div>
+<section id="note-from-phil" class="level1">
+<h1>Note from Phil</h1>
 <p>I am aiming to provide a clear and instructive analysis to Sr Leadership, mixing both written prose and visuals to provide an artifact for later viewing as well as a tool to center the conversation for a decision. I will start with the high level recommendation and then provide the steps for how we get there, knowing that depending on the leader’s availability, sometimes there is only time for the analysis and sometimes it’s desired to know how we got to the answer.</p>
 <p>I have intentionally designed this to be a code driven analysis in order to ensure that both the analysis is reproducible as well as that the code is reusable. It’s has been a common occurance for me where I have provided an analysis, we’ve made a decision and then a year later we want to evaluate the results. By this solution beig code based, we are able to quickly recreate the analysis and update with the necessary data without having to wonder if some data was omited due to outliers or if we intentionally just focused on a specific population.</p>
+<p>Because this presentation is meant for Sr Leadership I have intentionally removed most code, except for situations where it would be instructive or in more of of the detailed appendix. If you would like to review the code, please visit the code repository on Github by clicking on the icon on the top right and navigating to the “Source Code” link.</p>
+<p>Thanks for following along! -phil walker</p>
+</section>
+<section id="analysis-overview" class="level1">
+<h1>Analysis Overview</h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Problem Statement:</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data Soures</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Assumptions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Goals</a></li></ul>
 <div class="tab-content">
@@ -169,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li>Senior leadership is concerned with the on-going impact the pandemic and “Great Resignation” has had on the workforce. There is a pervasive belief that turnover has been steadily on the rise over the past five years, and recent high-profile terminations among some of the organization’s top performers have raised questions regarding the organization’s retention strategy.</li>
 <li>Senior leaders believe compensation is driving turnover and have proposed implementing an across the board annual raise of 6% at the start of next year to counteract the effect of inflation.</li>
-<li>You have one week to clean, review, and analyze the provided data to help senior leadership understand the current turnover landscape, the cost of their</li>
+<li>You have one week to clean, review, and analyze the provided data to help senior leadership understand the current turnover landscape, the cost of their proposal, and whether the proposed retention strategy will have the desired impact.</li>
 </ol>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -181,19 +200,23 @@ ul.task-list li input[type="checkbox"] {
 <li>BLA - Inflation (Consumer Price Index)</li>
 <li><a href="https://www.milmi.org/">Michigan Job</a></li>
 <li><a href="https://www.michigan.gov/mdcs/quick-links/workforcereports">Michigan Workforce Reports</a></li>
+<li>Nashville Workforce Reports</li>
 </ul>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <ul>
-<li>HRIS Data
+<li><p>Calculations</p>
 <ul>
-<li>Assuming that the majority of employees are Michigan residents</li>
+<li>Average Employees Per Month: Uses the # at the start of the month</li>
+<li>Turnover = # Resigned/ Avg Employee</li>
 </ul></li>
+<li><p>We are extracting part time employees from the population as we would expect the turnover rate to be different for these populations</p></li>
+<li><p>We recognize that there have been a large economic shift where more employees are staying at their companies, if we were to make a policy change we would want to differentiate between (and look for a causal link) between the policy and the company’s turnover.</p></li>
 </ul>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <ul>
-<li>Detailing what the current turnover rate is</li>
+<li>Detailing the current turnover rate</li>
 <li>Detailing if there are certain groups with higher turnover</li>
 <li>Determine if the higher turnover is correlated to the responses in the employee engagement survey</li>
 <li>Would a 6% raise even impact the cost of living due to inflation?</li>
@@ -203,6 +226,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
