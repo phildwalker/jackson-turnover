@@ -7,7 +7,8 @@ jcolor <- c("#5a2158", "#983560", "#cb575e", "#ee8757", "#febe57", "#f9f871")
 
 source(here::here("src", "monthly_employee.R"))
 
-employee <- readxl::read_xlsx(here::here("data", "Senior HR Data & Insights Consultant - Work Sample - HRIS Data.xlsx"))
+employee <- readxl::read_xlsx(here::here("data", "Senior HR Data & Insights Consultant - Work Sample - HRIS Data.xlsx")) |> 
+  filter(!Associate_Type %in% c("Temporary"))
 
 
 #--- is ID unique? -- yes

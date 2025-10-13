@@ -38,12 +38,14 @@ You are a Senior HR Data & Insights Consultant and have been asked to assist sen
 For this analysis we will be using the following data sources:
 
 -   HRIS Data - Employee tenure and Demographics
+    * Provided by employeer
 -   HRIS Data - Employee Survey Response
--   BLS - JOLTS
--   BLA - Inflation (Consumer Price Index)
+    * Provided by employeer
+-   [BLS - JOLTS](https://www.bls.gov/jlt/)
+-   [BLA - Inflation (Consumer Price Index)](https://www.bls.gov/cpi/)
 -   [Michigan Job](https://www.milmi.org/)
 -   [Michigan Workforce Reports](https://www.michigan.gov/mdcs/quick-links/workforcereports)
--   Nashville Workforce Reports
+-   [Nashville Workforce Reports](https://www.bls.gov/eag/eag.tn_nashville_msa.htm)
 
 ## Assumptions
 
@@ -62,6 +64,8 @@ For this analysis we will be using the following data sources:
 
 - Assuming that employees that are that employees with the effective date of the current job are _____
 
+- Jackson's NAICS code is 524113 (designates Direct Life Insurance Carriers)
+    * falls under the "Finance and Insurance" sector. (Sector 52)
 
 ## Goals
 
