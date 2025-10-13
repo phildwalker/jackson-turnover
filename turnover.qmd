@@ -126,25 +126,94 @@ turnover_month |>
 What population is seeing the largest impact?
 
 ```{r}
-exit
+termd <- emp_dates |> 
+  filter(Term_Date >= as.Date("2018-01-01")) |> 
+  left_join(., y=emp_clean, by = join_by(ID))  |> 
+  filter(ActiveEmp == 0) 
+
+termd |> count(Department)
+termd |> count(Location)
+termd |> count(Job_Level)
+termd |> count(Associate_Type)
+termd |> count(Time_Type)
+termd |> count(FLSA)
+termd |> count(Race_Ethnicity)
+termd |> count(Gender)
+termd |> count(MostRecent_Performance)
+termd |> count(Term_Type)
+
 ```
 
 ## Voluntary vs Involuntary
+
+Do we see a change in the ratio of involuntary vs voluntary terminations over time?
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| out-width: "100%"
+#| out-height: "40%"
+#| fig-align: center
+
+turnover_month <- emp_dates |> 
+  # head(10) |> 
+  rename(start_date = Hire_Date,
+        end_date = CleanEnd) |> 
+  select(employee_id = ID, start_date, end_date) |> 
+  create_monthly_activity() |> 
+  left_join( , y= emp_clean |> select(ID), 
+      by = join_by(employee_id == ID)) |> 
+  group_by(month) |> 
+  summarise(active_employee = n()) |> 
+  ungroup() |> 
+  filter(month >= as.Date("2018-01-01")) |> 
+  left_join( , y= emp_dates |> 
+                  left_join(., y=emp_clean |> select(ID, Term_Type), by = join_by(ID)) |> 
+                  group_by(Term_Month, Term_Type) |> 
+                  summarise(exits = n()) |> 
+                  ungroup(), 
+        by = join_by(month == Term_Month)) |> 
+  mutate(exits = ifelse(is.na(exits), 0, exits)) |> 
+  mutate(turnover = exits/active_employee) |> 
+  ungroup()
+
+
+turnover_month |> 
+  filter(month < as.Date("2025-10-01")) |> 
+    filter(month >= as.Date("2018-01-01")) |> 
+    ggplot(aes(month, turnover, color = Term_Type))+
+    geom_point()+
+    geom_line()+
+  scale_x_date(date_breaks = "6 month", date_labels = "%m-%Y") + 
+  scale_color_manual(values = jcolor) +
+  labs(title = "Count of Employees Exits By Month and Termination Type",
+    x = NULL, y= NULL) + 
+  theme(
+    panel.background = element_rect(fill = "#F8F5F5"),
+    plot.background = element_rect(fill = "#F8F5F5"),
+    legend.background = element_rect(fill = "#F8F5F5"),
+    legend.key = element_rect(fill = "#F8F5F5", color = "darkgrey")
+  )
+```
+
+## Turnover rate
+
+What's the yearly turnover rates from 2018 to now
 
 ```{r}
 
 ```
 
-## Turnover rate
-
--   Calculations
-
 ## Next Steps
 
 -   Detailing the current tur
+
 :::
 
 
 # Notes
 
 The initial exploratory data analysis (EDA) was performed within 'src/clean_employee.R' which can be found within the source code.
+
+I built "monthly_employee.R" as a function that could be called to get the active number of employees per month given a dataset like this HRIS sample. This would allow for a quick recreated of monthly view when we are testing future policy impacts.

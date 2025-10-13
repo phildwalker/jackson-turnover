@@ -240,32 +240,123 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>What population is seeing the largest impact?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>exit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>termd <span class="ot">&lt;-</span> emp_dates <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Term_Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"2018-01-01"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., <span class="at">y=</span>emp_clean, <span class="at">by =</span> <span class="fu">join_by</span>(ID))  <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ActiveEmp <span class="sc">==</span> <span class="dv">0</span>) </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Department)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 277 × 2
-   Term_Month exits
-   &lt;date&gt;     &lt;int&gt;
- 1 1999-09-01     1
- 2 1999-12-01     1
- 3 2000-02-01     1
- 4 2000-07-01     1
- 5 2000-10-01     1
- 6 2000-12-01     1
- 7 2001-01-01     1
- 8 2001-04-01     1
- 9 2001-06-01     1
-10 2001-07-01     1
-# ℹ 267 more rows</code></pre>
+<pre><code># A tibble: 6 × 2
+  Department          n
+  &lt;chr&gt;           &lt;int&gt;
+1 Finance           133
+2 Human Resources    63
+3 IT                250
+4 Marketing          60
+5 Operations        499
+6 Sales             252</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Location          n
+  &lt;chr&gt;         &lt;int&gt;
+1 Lansing, MI     850
+2 Nashville, TN   407</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Job_Level)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  Job_Level                  n
+  &lt;chr&gt;                  &lt;int&gt;
+1 Executive                121
+2 Individual Contributor   879
+3 Management               257</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Associate_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Associate_Type     n
+  &lt;chr&gt;          &lt;int&gt;
+1 Regular         1186
+2 Temporary         71</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Time_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Time_Type     n
+  &lt;chr&gt;     &lt;int&gt;
+1 Full time  1133
+2 Part time   124</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(FLSA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  FLSA           n
+  &lt;chr&gt;      &lt;int&gt;
+1 Exempt       878
+2 Non-Exempt   379</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Race_Ethnicity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  Race_Ethnicity                                n
+  &lt;chr&gt;                                     &lt;int&gt;
+1 American Indian or Alaska Native              8
+2 Asian                                       271
+3 Black or African American                   197
+4 Hispanic or Latino                          160
+5 Native Hawaiian or Other Pacific Islander     3
+6 Not Specified                                39
+7 Two or More Races                            53
+8 White (Not Hispanic or Latino)              526</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  Gender                            n
+  &lt;chr&gt;                         &lt;int&gt;
+1 Female                          494
+2 I choose not to self-identify    91
+3 Male                            646
+4 Nonbinary                        26</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(MostRecent_Performance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  MostRecent_Performance                n
+  &lt;chr&gt;                             &lt;int&gt;
+1 Below Expectations                  405
+2 Consistently Below Expectations      63
+3 Consistently Exceeds Expectations    14
+4 Exceeds Expectations                212
+5 Meets Expectations                  563</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Term_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Term_Type       n
+  &lt;chr&gt;       &lt;int&gt;
+1 Involuntary   333
+2 Voluntary     924</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-
+<p>Do we see a change in the ratio of involuntary vs voluntary terminations over time?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="turnover_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center figure-img" style="width:100.0%;height:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<ul>
-<li>Calculations</li>
-</ul>
+<p>What’s the yearly turnover rates from 2018 to now</p>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <ul>
@@ -278,6 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="notes" class="level1">
 <h1>Notes</h1>
 <p>The initial exploratory data analysis (EDA) was performed within ‘src/clean_employee.R’ which can be found within the source code.</p>
+<p>I built “monthly_employee.R” as a function that could be called to get the active number of employees per month given a dataset like this HRIS sample. This would allow for a quick recreated of monthly view when we are testing future policy impacts.</p>
 
 
 </section>
