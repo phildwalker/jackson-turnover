@@ -48,7 +48,7 @@ exit <-
 #| warning: false
 #| error: false
 #| out-width: "100%"
-#| out-height: "40%"
+#| out-height: "30%"
 #| fig-align: center
 p1 <- exit |> 
   filter(Term_Month < as.Date("2025-10-01")) |> 
@@ -111,12 +111,13 @@ f1 <- turn_year |>
                     exits_yr = "Exits",
                     yr_turn = "Turnover")
 
-table_grob <- gen_grob(f1, fit = "fixed", just = "center")
+table_grob <- gen_grob(f1, just = "center") #, fit = "fixed"
 
 ## showing both together
-p1 + table_grob & theme(plot.background = element_rect(fill = "#F8F5F5"))
+pw1 <- p1 | wrap_elements(full = table_grob) + 
+  plot_layout(widths = c(3,2))
 
-
+pw1 & theme(plot.background = element_rect(fill = "#F8F5F5"))
 
 ```
 
