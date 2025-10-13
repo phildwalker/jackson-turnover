@@ -27,11 +27,22 @@ Thanks for following along!
 ::: panel-tabset
 ## Problem Statement:
 
-You are a Senior HR Data & Insights Consultant and have been asked to assist senior HR leadership make a decision regarding a planned policy change.
+Below is the provided problem statement. This is what we will use as our driving focus for this analysis. 
 
-1.  Senior leadership is concerned with the on-going impact the pandemic and “Great Resignation” has had on the workforce. There is a pervasive belief that turnover has been steadily on the rise over the past five years, and recent high-profile terminations among some of the organization’s top performers have raised questions regarding the organization’s retention strategy.
-2.  Senior leaders believe compensation is driving turnover and have proposed implementing an across the board annual raise of 6% at the start of next year to counteract the effect of inflation.
-3.  You have one week to clean, review, and analyze the provided data to help senior leadership understand the current turnover landscape, the cost of their proposal, and whether the proposed retention strategy will have the desired impact.
+> You are a Senior HR Data & Insights Consultant and have been asked to assist senior HR leadership make a decision regarding a planned policy change.
+
+> 1.  Senior leadership is concerned with the on-going impact the pandemic and “Great Resignation” has had on the workforce. There is a pervasive belief that turnover has been steadily on the rise over the past five years, and recent high-profile terminations among some of the organization’s top performers have raised questions regarding the organization’s retention strategy.
+> 2.  Senior leaders believe compensation is driving turnover and have proposed implementing an across the board annual raise of 6% at the start of next year to counteract the effect of inflation.
+> 3.  You have one week to clean, review, and analyze the provided data to help senior leadership understand the current turnover landscape, the cost of their proposal, and whether the proposed retention strategy will have the desired impact.
+
+## Outcomes
+
+The following are the outcomes of this analysis. Also provided are the links to the locations of the outcomes. 
+
+-   Detailing the current turnover rate -> [Turnover Analysis](turnover.qmd#exit-trend)
+-   Detailing if there are certain groups with higher turnover
+-   Determine if the higher turnover is correlated to the responses in the employee engagement survey
+-   Would a 6% raise even impact the cost of living due to inflation?
 
 ## Data Soures
 
@@ -67,10 +78,5 @@ For this analysis we will be using the following data sources:
 - Jackson's NAICS code is 524113 (designates Direct Life Insurance Carriers)
     * falls under the "Finance and Insurance" sector. (Sector 52)
 
-## Goals
 
--   Detailing the current turnover rate
--   Detailing if there are certain groups with higher turnover
--   Determine if the higher turnover is correlated to the responses in the employee engagement survey
--   Would a 6% raise even impact the cost of living due to inflation?
 :::

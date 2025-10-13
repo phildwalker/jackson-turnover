@@ -10,10 +10,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: survey.qmd
-        text: Survey Reponses
       - href: turnover.qmd
         text: Turnover Details
+      - href: survey.qmd
+        text: Survey Reponses
       - href: next-steps.qmd
         text: Next Steps
     tools:
