@@ -22,7 +22,7 @@ website:
           - text: Source Code
             href:  https://github.com/phildwalker/jackson-turnover
           - text: Report a Bug
-            href:  https://github.com/phildwalker
+            href:  https://github.com/phildwalker/jackson-turnover/issues/new
 
 
 format:

@@ -1,5 +1,5 @@
 {
-  "hash": "e088b2c85db35d7c9bae162115f6c4f3",
+  "hash": "9c14ab0f0a2808809f319dfaabfae53a",
   "result": {
     "engine": "knitr",
     "markdown": "---\ntitle: \"Survey Responses\"\nformat:\n  html:\n    fig-width: 8\n    fig-height: 6\n---\n\nThis is where we will provide an analysis into the survey responses in order to determine if we see a correlation between survey responses and the ultimately the employee's decision to leave the company or not\n\n\nThis is a space where we'd be interested to tease out the difference's between different demographics and whether or not their responses are indicitive of different behaviors.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](survey_files/figure-html/unnamed-chunk-1-1.png){width=768}\n:::\n:::\n\n\nWe see a shift in responses from more negative in 2021 -> more positive in 2025",

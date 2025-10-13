@@ -9,37 +9,22 @@ format:
 
 # Trend of Exits 
 
-This is where we will provide a more detail view into the turnover both at Jackson as well as provide a larger view of how this organization is relative to the state wide view as well as the nationwide view.
+To start our understanding of employee turnover trends we are first looking at the monthly exits trended from 2018 to now and then we have calculated the year turnover rates. 
+
+* We see the trend of exits (as well as yearly turnover rates) saw a significant change from pre-pandemic levels during both 2022 and 2023.
+* While 2025 YTD turnover is still higher than pre-pandemic levels, the average monthly levels have significantly decreased.
 
 ```{r, init}
 #| echo: false
 #| warning: false
 #| error: false
 library(tidyverse)
-library(flextable)
-library(patchwork)
-theme_set(theme_bw())
-jcolor <- c("#5a2158", "#EF0029", "#983560", "#cb575e", "#ee8757", "#febe57", "#f9f871")
 
+source(here::here("src", "_initial_settings.R"))
 source(here::here("src", "monthly_employee.R"))
-
-set_flextable_defaults(
-  font.size = 10, theme_fun = theme_vanilla,
-  padding = 6,
-  background.color = "#F8F5F5")
-
-
 
 emp_clean <- readRDS(file = here::here("data", "employee.RDS"))
 emp_dates <- readRDS(file = here::here("data", "employee_dates.RDS"))
-
-#---- exit by month
-
-exit <-
-  emp_dates |> 
-  group_by(Term_Month) |> 
-  summarise(exits = n()) |> 
-  ungroup()
 
 ```
 
@@ -47,142 +32,15 @@ exit <-
 #| echo: false
 #| warning: false
 #| error: false
-#| out-width: "100%"
-#| out-height: "30%"
+#| fig-height: 4
 #| fig-align: center
-p1 <- exit |> 
-  filter(Term_Month < as.Date("2025-10-01")) |> 
-    filter(Term_Month >= as.Date("2018-01-01")) |> 
-    ggplot(aes(Term_Month, exits))+
-    geom_rect(aes(xmin = as.Date("2022-01-01"), xmax = as.Date("2023-01-01"), ymin = -Inf, ymax = Inf), alpha = 0.01, fill = jcolor[6])+
-    geom_rect(aes(xmin = as.Date("2023-01-01"), xmax = as.Date("2024-01-01"), ymin = -Inf, ymax = Inf), alpha = 0.01, fill = jcolor[4])+
-    geom_point()+
-    geom_line()+
+source(here::here("src", "trend_exits_turnover.R"))
 
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") + 
-  scale_color_manual(values = jcolor) +
-  labs(title = "Count of Employees Exits By Month",
-    x = NULL, y= NULL) + 
-  theme(
-    panel.background = element_rect(fill = "#F8F5F5"),
-    plot.background = element_rect(fill = "#F8F5F5")
-  )
-
-
-turn_year <- 
-  emp_dates |> 
-  rename(start_date = Hire_Date,
-        end_date = CleanEnd) |> 
-  select(employee_id = ID, start_date, end_date) |> 
-  create_monthly_activity() |> 
-  # left_join( , y= emp_clean |> select(ID, Time_Type), 
-  #     by = join_by(employee_id == ID)) |> 
-  group_by(month) |> 
-  summarise(active_employee = n()) |> 
-  ungroup() |> 
-  filter(month >= as.Date("2018-01-01"),
-          month < as.Date("2025-10-01")) |> 
-  left_join( , y= emp_dates |> 
-                  # left_join(., y=emp_clean |> select(ID, Time_Type), by = join_by(ID)) |> 
-                  group_by(Term_Month) |> 
-                  summarise(exits = n()) |> 
-                  ungroup(), 
-        by = join_by(month == Term_Month)) |> 
-  mutate(exits = ifelse(is.na(exits), 0, exits)) |> 
-  mutate(turnover = exits/active_employee) |> 
-  ungroup() |> 
-  mutate(yr = lubridate::floor_date(month, unit = "year")) |> 
-  group_by(yr) |> 
-  summarise(AvgEmp = mean(active_employee, na.rm= T),
-            exits_yr = sum(exits, na.rm=T)) |> 
-  ungroup() |> 
-  mutate(yr_turn = exits_yr/AvgEmp)
-
-f1 <- turn_year |> 
-  mutate(yr = year(yr)) |> 
-  flextable() |> 
-  colformat_num(j = "yr", big.mark = "", digits = 0) |> 
-  colformat_double(j = "AvgEmp", digits = 1) |> 
-  mk_par(j = "yr_turn", value = as_paragraph(as_chunk(yr_turn, formatter = fmt_pct))) |> 
-  bg(i = ~yr == 2022, bg = jcolor[6]) |> 
-  bg(i = ~yr == 2023, bg = jcolor[4]) |> 
-  set_header_labels(yr = "Year",
-                    AvgEmp= "Average Employees",
-                    exits_yr = "Exits",
-                    yr_turn = "Turnover")
-
-table_grob <- gen_grob(f1, just = "center") #, fit = "fixed"
-
-## showing both together
-pw1 <- p1 | wrap_elements(full = table_grob) + 
-  plot_layout(widths = c(3,2))
-
-pw1 & theme(plot.background = element_rect(fill = "#F8F5F5"))
-
+  pw2
 ```
 
-We see that there was a spike in early 2022, and then the count of exits hit a steady state for the year. Then again in 2023 there was a spike in exits with it hitting another steady state.
 
-It looks like the exits have returned to roughly pre-pandemic levels in 2024 going forward.
-
-## Overall Turnover Rate
-
-```{r, month-turn}
-#| echo: false
-#| warning: false
-#| error: false
-#| out-width: "100%"
-#| out-height: "40%"
-#| fig-align: center
-
-turnover_month <- emp_dates |> 
-  # head(10) |> 
-  rename(start_date = Hire_Date,
-        end_date = CleanEnd) |> 
-  select(employee_id = ID, start_date, end_date) |> 
-  create_monthly_activity() |> 
-  left_join( , y= emp_clean |> select(ID, Time_Type), 
-      by = join_by(employee_id == ID)) |> 
-  group_by(month, Time_Type) |> 
-  summarise(active_employee = n()) |> 
-  ungroup() |> 
-  filter(month >= as.Date("2018-01-01")) |> 
-  left_join( , y= emp_dates |> 
-                  left_join(., y=emp_clean |> select(ID, Time_Type), by = join_by(ID)) |> 
-                  group_by(Term_Month, Time_Type) |> 
-                  summarise(exits = n()) |> 
-                  ungroup(), 
-        by = join_by(month == Term_Month, Time_Type)) |> 
-  mutate(exits = ifelse(is.na(exits), 0, exits)) |> 
-  mutate(turnover = exits/active_employee) |> 
-  ungroup()
-
-
-turnover_month |> 
-  filter(month < as.Date("2025-10-01")) |> 
-    filter(month >= as.Date("2018-01-01")) |> 
-    ggplot(aes(month, turnover, color = Time_Type))+
-    geom_point()+
-    geom_line()+
-  scale_x_date(date_breaks = "1 year", date_labels = "%m-%Y") + 
-  scale_color_manual(values = jcolor) +
-  labs(title = "Count of Employees Exits By Month and Employeement Type",
-    x = NULL, y= NULL) + 
-  theme(
-    panel.background = element_rect(fill = "#F8F5F5"),
-    plot.background = element_rect(fill = "#F8F5F5"),
-    legend.background = element_rect(fill = "#F8F5F5"),
-    legend.key = element_rect(fill = "#F8F5F5", color = "darkgrey")
-  )
-
-
-
-```
-
-```{r, year-turn}
-
-```
-
+In order to understand more about the drivers of the increases in 2022 and 2023, we will then dig into the different characteristics of our employees. 
 
 # Analysis Overview
 

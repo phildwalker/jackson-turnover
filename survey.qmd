@@ -16,11 +16,10 @@ This is a space where we'd be interested to tease out the difference's between d
 #| warning: false
 #| error: false
 library(tidyverse)
-theme_set(theme_bw())
-jcolor <- c("#5a2158", "#983560", "#cb575e", "#ee8757", "#febe57", "#f9f871")
+
+source(here::here("src", "_initial_settings.R"))
 
 surv <- readRDS(file = here::here("data", "survey_long.RDS"))
-
 
 surv |> 
   ggplot(aes(Response))+
