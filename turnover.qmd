@@ -49,6 +49,10 @@ In order to understand more about the drivers of the increases in 2022 and 2023,
 
 What population is seeing the largest impact?
 
+* Looking into the population of employees within 2022-2023
+
+* We're going to use an anova to 
+
 ```{r}
 termd <- emp_dates |> 
   filter(Term_Date >= as.Date("2018-01-01")) |> 
