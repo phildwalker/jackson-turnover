@@ -5,13 +5,14 @@ format:
     title-block-banner: false # or none
 ---
 
+::: {.callout-note collapse="false"}
+# Note from Phil
+
 ```{r}
 #| echo: false
 dt <- Sys.Date()
 print(glue::glue("Presentation last built on: {dt}"))
 ```
-
-# Note from Phil
 
 I am aiming to provide a clear and instructive analysis to Sr Leadership, mixing both written prose and visuals to provide an artifact for later viewing as well as a tool to center the conversation for this decision. I will start with the high level recommendation and then provide the steps for how we get there, knowing that depending on the leader's availability, sometimes there is only time for the analysis and sometimes it's desired to know how we got to the answer.
 
@@ -22,6 +23,9 @@ Because this presentation is meant for Sr Leadership I have intentionally remove
 Thanks for joining as we analyze the turnover data!
 
 -phil walker
+
+:::
+
 
 # Analysis Overview
 
