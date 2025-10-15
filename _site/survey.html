@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -149,6 +184,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#survey-responses" id="toc-survey-responses" class="nav-link active" data-scroll-target="#survey-responses">Survey Responses</a>
   <ul class="collapse">
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
   <li><a href="#total-reponses" id="toc-total-reponses" class="nav-link" data-scroll-target="#total-reponses">Total Reponses</a></li>
   <li><a href="#responses-vs-turnover" id="toc-responses-vs-turnover" class="nav-link" data-scroll-target="#responses-vs-turnover">Responses vs Turnover</a></li>
   </ul></li>
@@ -181,13 +217,55 @@ ul.task-list li input[type="checkbox"] {
 <p>This is a space where we’d be interested to tease out the difference’s between different demographics and whether or not their responses are indicitive of different behaviors.</p>
 <section id="survey-responses" class="level1">
 <h1>Survey Responses</h1>
+<section id="note" class="level2">
+<h2 class="anchored" data-anchor-id="note">Note</h2>
+<p>The Engagement Data file contains associate responses to four survey items.</p>
+<ul>
+<li>OverallSat_[Year] – Overall, I am extremely satisfied with Jackson as a place to work.</li>
+<li>Recommend_[Year] – I would recommend Jackson as a great place to work.</li>
+<li>ThinkLeave_[Year] – I rarely think about looking for a job at a different company.</li>
+<li>Pride_[Year] – I feel proud to work at Jackson.</li>
+</ul>
+<p>Engagement survey items were rated using a 5-point rating scale:</p>
+<ul>
+<li>5 = Strongly Agree</li>
+<li>4 = Agree</li>
+<li>3 = Neither Agree nor Disagree</li>
+<li>2 = Disagree</li>
+<li>1 = Strongly Disagree</li>
+</ul>
+</section>
 <section id="total-reponses" class="level2">
 <h2 class="anchored" data-anchor-id="total-reponses">Total Reponses</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>surv <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Question_Type, Year) <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MedianResponse =</span> <span class="fu">median</span>(Response),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">AvgResponse =</span> <span class="fu">mean</span>(Response)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">|&gt;</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">names_to =</span> <span class="st">"SummaryStat"</span>, <span class="at">values_to =</span> <span class="st">"Score"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Score =</span> <span class="fu">round</span>(Score, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>Question_Type, <span class="at">values_from =</span> Score) <span class="sc">|&gt;</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_grouped_data</span>(<span class="at">groups =</span> <span class="fu">c</span>(<span class="st">"Year"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bold</span>(<span class="at">j =</span> <span class="dv">1</span>, <span class="at">i =</span> <span class="sc">~</span> <span class="sc">!</span><span class="fu">is.na</span>(Year), <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">part =</span> <span class="st">"body"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bold</span>(<span class="at">part =</span> <span class="st">"header"</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Question_Type'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-dce9f3b6{}.cl-dcdebaf0{font-family:'Arial';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dcdebafa{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dce2d928{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:6pt;padding-top:6pt;padding-left:6pt;padding-right:6pt;line-height: 1;background-color:transparent;}.cl-dce2d932{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:6pt;padding-top:6pt;padding-left:6pt;padding-right:6pt;line-height: 1;background-color:transparent;}.cl-dce2ff3e{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dce2ff48{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dce2ff49{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dce2ff4a{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dce2ff52{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dce2ff53{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dce2ff54{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dce2ff5c{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-dce9f3b6"><thead><tr style="overflow-wrap:break-word;"><th class="cl-dce2ff3e"><p class="cl-dce2d928"><span class="cl-dcdebaf0">Year</span></p></th><th class="cl-dce2ff3e"><p class="cl-dce2d928"><span class="cl-dcdebaf0">SummaryStat</span></p></th><th class="cl-dce2ff48"><p class="cl-dce2d932"><span class="cl-dcdebaf0">OverallSat</span></p></th><th class="cl-dce2ff48"><p class="cl-dce2d932"><span class="cl-dcdebaf0">Pride</span></p></th><th class="cl-dce2ff48"><p class="cl-dce2d932"><span class="cl-dcdebaf0">Recommend</span></p></th><th class="cl-dce2ff48"><p class="cl-dce2d932"><span class="cl-dcdebaf0">ThinkLeave</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff49"><p class="cl-dce2d928"><span class="cl-dcdebaf0">2021</span></p></td><td class="cl-dce2ff49"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff4a"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff4a"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff4a"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff4a"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa">MedianResponse</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa">AvgResponse</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.2</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.2</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.3</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebaf0">2023</span></p></td><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa">MedianResponse</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa">AvgResponse</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.6</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.7</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.7</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">3.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebaf0">2025</span></p></td><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff52"><p class="cl-dce2d928"><span class="cl-dcdebafa">MedianResponse</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td><td class="cl-dce2ff53"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dce2ff54"><p class="cl-dce2d928"><span class="cl-dcdebafa"></span></p></td><td class="cl-dce2ff54"><p class="cl-dce2d928"><span class="cl-dcdebafa">AvgResponse</span></p></td><td class="cl-dce2ff5c"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.1</span></p></td><td class="cl-dce2ff5c"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.1</span></p></td><td class="cl-dce2ff5c"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.2</span></p></td><td class="cl-dce2ff5c"><p class="cl-dce2d932"><span class="cl-dcdebafa">4.0</span></p></td></tr></tbody></table></div>
+</div>
+</div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="survey_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="survey_files/figure-html/response-perc-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -202,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-ef731700{}.cl-ef67ce54{font-family:'Arial';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ef67ce5e{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ef6cb52c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:6pt;padding-top:6pt;padding-left:6pt;padding-right:6pt;line-height: 1;background-color:transparent;}.cl-ef6cd78c{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ef6cd7a0{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-ef731700"><thead><tr style="overflow-wrap:break-word;"><th class="cl-ef6cd78c"><p class="cl-ef6cb52c"><span class="cl-ef67ce54">Surv_OverallSat</span></p></th><th class="cl-ef6cd78c"><p class="cl-ef6cb52c"><span class="cl-ef67ce54">Surv_Recommend</span></p></th><th class="cl-ef6cd78c"><p class="cl-ef6cb52c"><span class="cl-ef67ce54">Surv_ThinkLeave</span></p></th><th class="cl-ef6cd78c"><p class="cl-ef6cb52c"><span class="cl-ef67ce54">Surv_Pride</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-ef6cd7a0"><p class="cl-ef6cb52c"><span class="cl-ef67ce5e">-0.498129</span></p></td><td class="cl-ef6cd7a0"><p class="cl-ef6cb52c"><span class="cl-ef67ce5e">-0.4852852</span></p></td><td class="cl-ef6cd7a0"><p class="cl-ef6cb52c"><span class="cl-ef67ce5e">-0.4744403</span></p></td><td class="cl-ef6cd7a0"><p class="cl-ef6cb52c"><span class="cl-ef67ce5e">-0.4339497</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-dd6e3900{}.cl-dd62f96e{font-family:'Arial';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dd62f982{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dd678dc6{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:6pt;padding-top:6pt;padding-left:6pt;padding-right:6pt;line-height: 1;background-color:transparent;}.cl-dd67afb8{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd67afc2{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-dd6e3900"><thead><tr style="overflow-wrap:break-word;"><th class="cl-dd67afb8"><p class="cl-dd678dc6"><span class="cl-dd62f96e">Surv_OverallSat</span></p></th><th class="cl-dd67afb8"><p class="cl-dd678dc6"><span class="cl-dd62f96e">Surv_Recommend</span></p></th><th class="cl-dd67afb8"><p class="cl-dd678dc6"><span class="cl-dd62f96e">Surv_ThinkLeave</span></p></th><th class="cl-dd67afb8"><p class="cl-dd678dc6"><span class="cl-dd62f96e">Surv_Pride</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-dd67afc2"><p class="cl-dd678dc6"><span class="cl-dd62f982">-0.498129</span></p></td><td class="cl-dd67afc2"><p class="cl-dd678dc6"><span class="cl-dd62f982">-0.4852852</span></p></td><td class="cl-dd67afc2"><p class="cl-dd678dc6"><span class="cl-dd62f982">-0.4744403</span></p></td><td class="cl-dd67afc2"><p class="cl-dd678dc6"><span class="cl-dd62f982">-0.4339497</span></p></td></tr></tbody></table></div>
 <p>Correlation of Survey Response to Termination</p>
 </div>
 </div>

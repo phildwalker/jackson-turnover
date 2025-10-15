@@ -137,7 +137,7 @@ bls_jolt <-
 bls_p1 <- bls_jolt |> 
   ggplot(aes(Date, value, color=name))+
       geom_rect(aes(xmin = as.Date("2022-01-01"), xmax = as.Date("2023-01-01"), ymin = -Inf, ymax = Inf), alpha = 0.01, fill = jcolor[6])+
-    geom_rect(aes(xmin = as.Date("2023-01-01"), xmax = as.Date("2024-01-01"), ymin = -Inf, ymax = Inf), alpha = 0.01, fill = jcolor[4])+
+    geom_rect(aes(xmin = as.Date("2023-01-01"), xmax = as.Date("2024-01-01"), ymin = -Inf, ymax = Inf), alpha = 0.01, fill = jcolor[5])+
 
    geom_point()+
    geom_line()+

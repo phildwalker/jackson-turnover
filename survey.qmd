@@ -36,6 +36,21 @@ most_recnt <-
 
 # Survey Responses
 
+## Note
+The Engagement Data file contains associate responses to four survey items.
+
+* OverallSat_[Year] – Overall, I am extremely satisfied with Jackson as a place to work.
+* Recommend_[Year] – I would recommend Jackson as a great place to work.
+* ThinkLeave_[Year] – I rarely think about looking for a job at a different company.
+* Pride_[Year] – I feel proud to work at Jackson.
+
+Engagement survey items were rated using a 5-point rating scale:
+
+* 5 = Strongly Agree
+* 4 = Agree
+* 3 = Neither Agree nor Disagree
+* 2 = Disagree
+* 1 = Strongly Disagree
 
 ## Total Reponses
 
@@ -43,6 +58,7 @@ most_recnt <-
 #| echo: false
 #| warning: false
 #| error: false
+#| eval: false
 
 surv |> 
   ggplot(aes(Response))+
@@ -50,6 +66,51 @@ surv |>
   scale_fill_manual(values = jcolor) +
   facet_wrap(Question_Type ~ .)+
   labs(title = "Count of Responses by Year for each survey group") + 
+  theme(
+    panel.background = element_rect(fill = "#F8F5F5"),
+    plot.background = element_rect(fill = "#F8F5F5"),
+    legend.background = element_rect(fill = "#F8F5F5"),
+    legend.key = element_rect(fill = "#F8F5F5", color = "darkgrey")
+  )
+
+```
+
+```{r, resonse-table}
+library(flextable)
+
+surv |> 
+  group_by(Question_Type, Year) |> 
+  summarise(MedianResponse = median(Response),
+            AvgResponse = mean(Response)
+            ) |> 
+  ungroup() |> 
+  pivot_longer(cols = 3:4, names_to = "SummaryStat", values_to = "Score") |> 
+  mutate(Score = round(Score, digits = 1)) |> 
+  pivot_wider(names_from=Question_Type, values_from = Score) |> 
+  as_grouped_data(groups = c("Year")) |> 
+  flextable() |> 
+    bold(j = 1, i = ~ !is.na(Year), bold = TRUE, part = "body") %>%
+   bold(part = "header", bold = TRUE)
+
+```
+
+```{r response-perc}
+#| echo: false
+#| warning: false
+#| error: false
+
+surv |> 
+  group_by(Question_Type, Year, Response) |> 
+  count() |> 
+  group_by(Question_Type, Year) |> 
+  mutate(PercentGroup = n/sum(n)) |> 
+  ggplot(aes(x=Response, y=PercentGroup,fill = Year))+
+  geom_bar(stat = "identity", position = "dodge")+
+  scale_fill_manual(values = jcolor) +
+  scale_y_continuous(label = scales::percent_format(), expand = c(0,0)) +
+  facet_wrap(Question_Type ~ .)+
+  labs(title = "Distribution of Responses by Year for each survey group",
+        y = NULL) + 
   theme(
     panel.background = element_rect(fill = "#F8F5F5"),
     plot.background = element_rect(fill = "#F8F5F5"),

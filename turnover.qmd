@@ -73,7 +73,9 @@ source(here::here("src", "jolts_data.R"))
 
 ## Voluntary vs Involuntary
 
-Do we see a change in the ratio of involuntary vs voluntary terminations over time?
+Interestingly we see that both voluntary and involuntary turnover increases saw spikes in 2022 and 2023, with the levels going back down in 2024 and 2025. 
+
+* This would seem to indicate that there were both significant layoffs in these two years as well as significant 
 
 ```{r}
 #| echo: false
@@ -96,24 +98,31 @@ turnover_month <- emp_dates |>
   ungroup() |> 
   filter(month >= as.Date("2018-01-01")) |> 
   left_join( , y= emp_dates |> 
-                  left_join(., y=emp_clean |> select(ID, Term_Type), by = join_by(ID)) |> 
+                  left_join(., y=emp_clean |> filter(!is.na(Term_Type)) |> select(ID, Term_Type), by = join_by(ID)) |> 
                   group_by(Term_Month, Term_Type) |> 
                   summarise(exits = n()) |> 
-                  ungroup(), 
+                  ungroup() |> 
+                  filter(!is.na(Term_Type)), 
         by = join_by(month == Term_Month)) |> 
   mutate(exits = ifelse(is.na(exits), 0, exits)) |> 
   mutate(turnover = exits/active_employee) |> 
-  ungroup()
+  ungroup() |> 
+  filter(!is.na(Term_Type))
 
 
 turnover_month |> 
   filter(month < as.Date("2025-10-01")) |> 
     filter(month >= as.Date("2018-01-01")) |> 
     ggplot(aes(month, turnover, color = Term_Type))+
+    geom_rect(aes(xmin = as.Date("2022-01-01"), xmax = as.Date("2023-01-01"), ymin = -Inf, ymax = Inf), 
+      alpha = 0.01, fill = jcolor[6])+
+    geom_rect(aes(xmin = as.Date("2023-01-01"), xmax = as.Date("2024-01-01"), ymin = -Inf, ymax = Inf), 
+      alpha = 0.01, fill = jcolor[5])+
     geom_point()+
     geom_line()+
-  scale_x_date(date_breaks = "6 month", date_labels = "%m-%Y") + 
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") + 
   scale_color_manual(values = jcolor) +
+  scale_y_continuous(labels = scales::percent_format())+
   labs(title = "Count of Employees Exits By Month and Termination Type",
     x = NULL, y= NULL) + 
   theme(

@@ -30,7 +30,7 @@ p1 <- exit |>
     filter(Term_Month >= as.Date("2018-01-01")) |> 
     ggplot(aes(Term_Month, exits))+
     geom_rect(aes(xmin = as.Date("2022-01-01"), xmax = as.Date("2023-01-01"), ymin = -Inf, ymax = Inf), alpha = 0.01, fill = jcolor[6])+
-    geom_rect(aes(xmin = as.Date("2023-01-01"), xmax = as.Date("2024-01-01"), ymin = -Inf, ymax = Inf), alpha = 0.01, fill = jcolor[4])+
+    geom_rect(aes(xmin = as.Date("2023-01-01"), xmax = as.Date("2024-01-01"), ymin = -Inf, ymax = Inf), alpha = 0.01, fill = jcolor[5])+
     geom_point()+
     geom_line()+
 

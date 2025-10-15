@@ -11,7 +11,7 @@
     "href": "turnover.html#voluntary-vs-involuntary",
     "title": "Turnover",
     "section": "Voluntary vs Involuntary",
-    "text": "Voluntary vs Involuntary\nDo we see a change in the ratio of involuntary vs voluntary terminations over time?"
+    "text": "Voluntary vs Involuntary\nInterestingly we see that both voluntary and involuntary turnover increases saw spikes in 2022 and 2023, with the levels going back down in 2024 and 2025.\n\nThis would seem to indicate that there were both significant layoffs in these two years as well as significant"
   },
   {
     "objectID": "next-steps.html",
@@ -42,11 +42,18 @@
     "text": "This is where we will provide an analysis into the survey responses in order to determine if we see a correlation between survey responses and the ultimately the employee’s decision to leave the company or not\nThis is a space where we’d be interested to tease out the difference’s between different demographics and whether or not their responses are indicitive of different behaviors."
   },
   {
+    "objectID": "survey.html#note",
+    "href": "survey.html#note",
+    "title": "Survey Responses",
+    "section": "Note",
+    "text": "Note\nThe Engagement Data file contains associate responses to four survey items.\n\nOverallSat_[Year] – Overall, I am extremely satisfied with Jackson as a place to work.\nRecommend_[Year] – I would recommend Jackson as a great place to work.\nThinkLeave_[Year] – I rarely think about looking for a job at a different company.\nPride_[Year] – I feel proud to work at Jackson.\n\nEngagement survey items were rated using a 5-point rating scale:\n\n5 = Strongly Agree\n4 = Agree\n3 = Neither Agree nor Disagree\n2 = Disagree\n1 = Strongly Disagree"
+  },
+  {
     "objectID": "survey.html#total-reponses",
     "href": "survey.html#total-reponses",
     "title": "Survey Responses",
     "section": "Total Reponses",
-    "text": "Total Reponses\n\n\n\n\n\n\n\n\n\nWe see a shift in responses from more negative in 2021 -&gt; more positive in 2025"
+    "text": "Total Reponses\n\nlibrary(flextable)\n\nsurv |&gt; \n  group_by(Question_Type, Year) |&gt; \n  summarise(MedianResponse = median(Response),\n            AvgResponse = mean(Response)\n            ) |&gt; \n  ungroup() |&gt; \n  pivot_longer(cols = 3:4, names_to = \"SummaryStat\", values_to = \"Score\") |&gt; \n  mutate(Score = round(Score, digits = 1)) |&gt; \n  pivot_wider(names_from=Question_Type, values_from = Score) |&gt; \n  as_grouped_data(groups = c(\"Year\")) |&gt; \n  flextable() |&gt; \n    bold(j = 1, i = ~ !is.na(Year), bold = TRUE, part = \"body\") %&gt;%\n   bold(part = \"header\", bold = TRUE)\n\n`summarise()` has grouped output by 'Question_Type'. You can override using the\n`.groups` argument.\n\n\nYearSummaryStatOverallSatPrideRecommendThinkLeave2021MedianResponse3.03.03.03.0AvgResponse3.23.23.33.12023MedianResponse4.04.04.04.0AvgResponse3.63.73.73.52025MedianResponse4.04.04.04.0AvgResponse4.14.14.24.0\n\n\n\n\n\n\n\n\n\n\n\nWe see a shift in responses from more negative in 2021 -&gt; more positive in 2025"
   },
   {
     "objectID": "survey.html#responses-vs-turnover",
