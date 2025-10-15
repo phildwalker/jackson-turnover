@@ -9,6 +9,7 @@ So what are our next steps from here?
 
 1. Would love to capture more information about exits to better track. One that would be interesting is capturing when we have 'regrettable loss', or better detailing what characteristics would make an exit more regettable for the organization.
 1. Would be interesting to bring in the exit interview data to augment the analysis to dig further into employee's decisions to leave. 
+1. For our employee enagement survey, it would be helpful to think about gathering more detailed feedback around employee perceptions. (ie something like: "are you fairly compensated for the work you perform?", with the goal of understanding how an across the board raise might impact their perceptions).
 
 
 # Testing Hypotheses
@@ -16,3 +17,10 @@ So what are our next steps from here?
 1. We would want to measure the turnover after we make this policy change to determine if it had the intended affect.
     * Know that this would be a long feedback loop as we would want to wait at least a month before testing again.
     * Could utilize a chi-sqare test to test for differences. 
+
+
+# Questions to consider:
+
+1.  Would a 6% raise even impact employee satisfaction
+    * How would it compare to the cost of living due to inflation?
+    * Would want to have the questions in the 

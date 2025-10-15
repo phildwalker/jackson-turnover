@@ -39,11 +39,24 @@ Below is the provided problem statement. This is what we will use as our driving
 
 The following are the outcomes of this analysis. Also provided are the links to the locations of the outcomes. 
 
--   Detailing the current turnover rate -> [Turnover Analysis](turnover.qmd#exit-trend)
-     * tdlr; 2022 and 2023 saw significantly higher turnover, but it's been returning back to pre-pandemic rates.
--   Detailing if there are certain groups with higher turnover
--   Determine if the higher turnover is correlated to the responses in the employee engagement survey
--   Would a 6% raise even impact the cost of living due to inflation?
+- **What's the turnover picture?** 
+    * *tdlr;* 2022 and 2023 saw significantly higher turnover, but it's been returning back to pre-pandemic rates.
+    * Detailing the current turnover rate -> [Turnover Analysis](turnover.qmd#exit-trend)
+
+- **What's driving exits?**
+    * Are the survey responses correlated to employee exits?
+        * *tdlr;* there was a shift in reponses from 2021 to 2023 + 2025
+        * Details in survey reponses -> [Survey Analysis](survey.qmd#overall-response)
+    * Are their certain employee characteristics that are more likely to exit?
+        * *tldr;* it's more likely that ----
+        * Details of employees -> [Employee Characteristics](employee-char.qmd#overall-response)
+
+- **Where to now?**  
+    * [Next Steps](next-steps.qmd)
+    * Suggestions for additional data to capture
+    * Questions for further discussion
+
+
 
 ## Data Soures
 
