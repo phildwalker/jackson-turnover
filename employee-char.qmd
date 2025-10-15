@@ -6,6 +6,18 @@ format:
     fig-height: 6
 ---
 
+
+::: {.callout-caution collapse="true"}
+## Additional Analysis: Correlation to Voluntary
+
+Want to calculate a couple of metrics
+
+* Time in current position
+* Want to deteremine how we want to do the pay bands
+* Want to consolidate down the Race groups
+
+:::
+
 This is where we will provide an analysis into the HRIS data in order to determine if we see if there are certain employee charatistics make are indicitive of whether or not an employee is more likely to leave.
 
 This is a space where we'd be interested to tease out the difference's between different demographics and whether or not their responses are indicitive of different behaviors.

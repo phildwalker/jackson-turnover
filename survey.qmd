@@ -11,6 +11,18 @@ This is where we will provide an analysis into the survey responses in order to 
 
 This is a space where we'd be interested to tease out the difference's between different demographics and whether or not their responses are indicitive of different behaviors.
 
+
+::: {.callout-important collapse="true"}
+## Additional Analysis: Correlation to Voluntary
+
+It would be interesting to add a view into if the survery responses are more connected to voluntary or involuntary turnover.
+
+It's possible that both groups are unsatisfied but it you would want to know if one of the survery response is more connected to a certain group or not.
+
+It's also possible that the involuntary turnover employees were statisfied and there were more caught offguard as a result of their terminations
+
+:::
+
 ```{r, overall-response}
 #| echo: false
 #| warning: false
@@ -156,4 +168,5 @@ correlations <- most_recnt %>%
 
 correlations |> flextable::flextable()
 ```
+
 

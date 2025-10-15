@@ -20,7 +20,7 @@ emp_dates <- readRDS(file = here::here("data", "employee_dates.RDS"))
 
 ```
 
-::: {.callout-caution collapse="true"}
+::: {.callout-important collapse="true"}
 ## Additional Analysis: Increase in Voluntary in Sept 2025
 
 There is a slight increase in the voluntary turnover in Sept 2025, would want to dig further into this to determine if this would seem to be a trend or if there is something else going on here.
