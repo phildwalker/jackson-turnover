@@ -44,6 +44,7 @@ source(here::here("src", "trend_exits_turnover.R"))
 We want to understand how Jackson compares to the larger economic forces in order to assess if Jackson turnover generally aligns. 
 
 * We do see that the job openings have slowed in the Finance and Insurance industry since the start of 2024, and the quit rate was higher in 2022 and 2023 than before or after that time frame.
+   * This would indicate that the Finance industry nationwide allows had a similar trend of a "Great Resignation" in 2022-2023 and has generally moved to the "Great Stay" as new openings have cooled.
 
 ```{r}
 #| echo: false
