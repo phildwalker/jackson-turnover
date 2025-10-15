@@ -52,13 +52,14 @@ Engagement survey items were rated using a 5-point rating scale:
 * 2 = Disagree
 * 1 = Strongly Disagree
 
-## Total Reponses
+## Survey Response Overall
 
 ```{r}
 #| echo: false
 #| warning: false
 #| error: false
 #| eval: false
+#| fig-height: 4
 
 surv |> 
   ggplot(aes(Response))+
@@ -76,6 +77,10 @@ surv |>
 ```
 
 ```{r, resonse-table}
+#| echo: false
+#| warning: false
+#| error: false
+#| 
 library(flextable)
 
 surv |> 
@@ -98,6 +103,7 @@ surv |>
 #| echo: false
 #| warning: false
 #| error: false
+#| fig-height: 4
 
 surv |> 
   group_by(Question_Type, Year, Response) |> 

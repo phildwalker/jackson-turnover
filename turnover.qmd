@@ -20,6 +20,16 @@ emp_dates <- readRDS(file = here::here("data", "employee_dates.RDS"))
 
 ```
 
+::: {.callout-caution collapse="true"}
+## Additional Analysis: Increase in Voluntary in Sept 2025
+
+There is a slight increase in the voluntary turnover in Sept 2025, would want to dig further into this to determine if this would seem to be a trend or if there is something else going on here.
+
+From the BLS data, it looks like the market supports that there is a delta between voluntary and involuntary, but it doesn't seem like there's a trend up for voluntary recently.
+
+:::
+
+
 # Trend of Exits 
 
 To start our understanding of employee turnover trends we are first looking at the monthly exits trended from 2018 to now and then we have calculated the year turnover rates. 
@@ -51,7 +61,7 @@ We want to understand how Jackson compares to the larger economic forces in orde
 #| warning: false
 #| error: false
 #| out-width: "100%"
-#| out-height: "40%"
+#| fig-height: 4
 #| fig-align: center
 
 source(here::here("src", "jolts_data.R"))
@@ -82,7 +92,7 @@ Interestingly we see that both voluntary and involuntary turnover increases saw 
 #| warning: false
 #| error: false
 #| out-width: "100%"
-#| out-height: "40%"
+#| fig-height: 4
 #| fig-align: center
 
 turnover_month <- emp_dates |> 
