@@ -25,8 +25,7 @@ emp_dates <- readRDS(file = here::here("data", "employee_dates.RDS"))
 To start our understanding of employee turnover trends we are first looking at the monthly exits trended from 2018 to now and then we have calculated the year turnover rates. 
 
 * We see the trend of exits (as well as yearly turnover rates) saw a significant change from pre-pandemic levels during both 2022 and 2023.
-* While 2025 YTD turnover is still higher than pre-pandemic levels, the average monthly levels have significantly decreased.
-
+* While 2025 YTD turnover higher than pre-pandemic levels, the average monthly levels have significantly decreased.
 
 ```{r, exit-trend}
 #| echo: false
@@ -40,36 +39,15 @@ source(here::here("src", "trend_exits_turnover.R"))
 ```
 
 
-In order to understand more about the drivers of the increases in 2022 and 2023, we will then dig into the different characteristics of our employees. 
+# Macro-economic Trends
 
-# Analysis Overview
-
-::: panel-tabset
-## Exits:
-
-What population is seeing the largest impact?
-
-* Looking into the population of employees within 2022-2023 vs 2018-2022
-* We're going to use an anova to 
+We want to understand how Jackson compares to the larger economic forces in order to assess if Jackson turnover generally aligns. 
 
 ```{r}
-termd <- emp_dates |> 
-  filter(Term_Date >= as.Date("2018-01-01")) |> 
-  left_join(., y=emp_clean, by = join_by(ID))  |> 
-  filter(ActiveEmp == 0) 
-
-termd |> count(Department)
-termd |> count(Location)
-termd |> count(Job_Level)
-termd |> count(Associate_Type)
-termd |> count(Time_Type)
-termd |> count(FLSA)
-termd |> count(Race_Ethnicity)
-termd |> count(Gender)
-termd |> count(MostRecent_Performance)
-termd |> count(Term_Type)
 
 ```
+
+# Digging into Turnovers
 
 ## Voluntary vs Involuntary
 
@@ -124,19 +102,6 @@ turnover_month |>
   )
 ```
 
-## Turnover rate
-
-What's the yearly turnover rates from 2018 to now
-
-```{r}
-
-```
-
-## Next Steps
-
--   Detailing the current tur
-
-:::
 
 
 # Notes

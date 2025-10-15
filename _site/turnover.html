@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -74,7 +39,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5ea530cd6db7355f1021e619708bd41a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-54ae6a06c31843e871518ccb3859e9c6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -179,7 +144,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#trend-of-exits" id="toc-trend-of-exits" class="nav-link active" data-scroll-target="#trend-of-exits">Trend of Exits</a></li>
-  <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link" data-scroll-target="#analysis-overview">Analysis Overview</a></li>
+  <li><a href="#macro-economic-trends" id="toc-macro-economic-trends" class="nav-link" data-scroll-target="#macro-economic-trends">Macro-economic Trends</a></li>
+  <li><a href="#digging-into-turnovers" id="toc-digging-into-turnovers" class="nav-link" data-scroll-target="#digging-into-turnovers">Digging into Turnovers</a>
+  <ul class="collapse">
+  <li><a href="#voluntary-vs-involuntary" id="toc-voluntary-vs-involuntary" class="nav-link" data-scroll-target="#voluntary-vs-involuntary">Voluntary vs Involuntary</a></li>
+  </ul></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   </ul>
 </nav>
@@ -211,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To start our understanding of employee turnover trends we are first looking at the monthly exits trended from 2018 to now and then we have calculated the year turnover rates.</p>
 <ul>
 <li>We see the trend of exits (as well as yearly turnover rates) saw a significant change from pre-pandemic levels during both 2022 and 2023.</li>
-<li>While 2025 YTD turnover is still higher than pre-pandemic levels, the average monthly levels have significantly decreased.</li>
+<li>While 2025 YTD turnover higher than pre-pandemic levels, the average monthly levels have significantly decreased.</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -222,123 +191,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>In order to understand more about the drivers of the increases in 2022 and 2023, we will then dig into the different characteristics of our employees.</p>
 </section>
-<section id="analysis-overview" class="level1">
-<h1>Analysis Overview</h1>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Exits:</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Voluntary vs Involuntary</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Turnover rate</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Next Steps</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>What population is seeing the largest impact?</p>
-<ul>
-<li>Looking into the population of employees within 2022-2023 vs 2018-2022</li>
-<li>We’re going to use an anova to</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>termd <span class="ot">&lt;-</span> emp_dates <span class="sc">|&gt;</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Term_Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"2018-01-01"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., <span class="at">y=</span>emp_clean, <span class="at">by =</span> <span class="fu">join_by</span>(ID))  <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ActiveEmp <span class="sc">==</span> <span class="dv">0</span>) </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Department)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  Department          n
-  &lt;chr&gt;           &lt;int&gt;
-1 Finance           126
-2 Human Resources    59
-3 IT                235
-4 Marketing          57
-5 Operations        468
-6 Sales             241</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  Location          n
-  &lt;chr&gt;         &lt;int&gt;
-1 Lansing, MI     798
-2 Nashville, TN   388</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Job_Level)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  Job_Level                  n
-  &lt;chr&gt;                  &lt;int&gt;
-1 Executive                121
-2 Individual Contributor   808
-3 Management               257</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Associate_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  Associate_Type     n
-  &lt;chr&gt;          &lt;int&gt;
-1 Regular         1186</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Time_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  Time_Type     n
-  &lt;chr&gt;     &lt;int&gt;
-1 Full time  1133
-2 Part time    53</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(FLSA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  FLSA           n
-  &lt;chr&gt;      &lt;int&gt;
-1 Exempt       878
-2 Non-Exempt   308</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Race_Ethnicity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 2
-  Race_Ethnicity                                n
-  &lt;chr&gt;                                     &lt;int&gt;
-1 American Indian or Alaska Native              7
-2 Asian                                       255
-3 Black or African American                   192
-4 Hispanic or Latino                          144
-5 Native Hawaiian or Other Pacific Islander     3
-6 Not Specified                                37
-7 Two or More Races                            52
-8 White (Not Hispanic or Latino)              496</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 2
-  Gender                            n
-  &lt;chr&gt;                         &lt;int&gt;
-1 Female                          463
-2 I choose not to self-identify    84
-3 Male                            615
-4 Nonbinary                        24</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(MostRecent_Performance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-  MostRecent_Performance                n
-  &lt;chr&gt;                             &lt;int&gt;
-1 Below Expectations                  385
-2 Consistently Below Expectations      61
-3 Consistently Exceeds Expectations    14
-4 Exceeds Expectations                194
-5 Meets Expectations                  532</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Term_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  Term_Type       n
-  &lt;chr&gt;       &lt;int&gt;
-1 Involuntary   322
-2 Voluntary     864</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<section id="macro-economic-trends" class="level1">
+<h1>Macro-economic Trends</h1>
+<p>We want to understand how Jackson compares to the larger economic forces in order to assess if Jackson turnover generally aligns.</p>
+</section>
+<section id="digging-into-turnovers" class="level1">
+<h1>Digging into Turnovers</h1>
+<section id="voluntary-vs-involuntary" class="level2">
+<h2 class="anchored" data-anchor-id="voluntary-vs-involuntary">Voluntary vs Involuntary</h2>
 <p>Do we see a change in the ratio of involuntary vs voluntary terminations over time?</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -349,17 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p>What’s the yearly turnover rates from 2018 to now</p>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<ul>
-<li>Detailing the current tur</li>
-</ul>
-</div>
-</div>
-</div>
+</section>
 </section>
 <section id="notes" class="level1">
 <h1>Notes</h1>

@@ -12,11 +12,12 @@ print(glue::glue("Presentation last built on: {dt}"))
 ```
 
 # Note from Phil
+
 I am aiming to provide a clear and instructive analysis to Sr Leadership, mixing both written prose and visuals to provide an artifact for later viewing as well as a tool to center the conversation for this decision. I will start with the high level recommendation and then provide the steps for how we get there, knowing that depending on the leader's availability, sometimes there is only time for the analysis and sometimes it's desired to know how we got to the answer.
 
 I have intentionally designed this to be a code driven analysis in order to ensure that both the analysis is reproducible as well as that the code is reusable. It has been a common occurance for me where I have provided an analysis, we've made a decision and then a year later we want to evaluate the results. By this solution being code based, we are able to quickly recreate the analysis and update with the necessary data without having to wonder if some data was omited due to outliers or if we intentionally just focused on a specific population.
 
-Because this presentation is meant for Sr Leadership I have intentionally removed most code, except for situations where it would be instructive or in more of of the detailed appendix. If you would like to review the code, please visit the code repository on Github by clicking on the icon on the top right and navigating to the "Source Code" link. 
+Because this presentation is meant for Sr Leadership I have intentionally removed most code, except for situations where it would be instructive or in more of of the detailed appendix. If you would like to review the code, please visit the code repository on Github by clicking on the icon on the top right and navigating to the "Source Code" link.
 
 Thanks for following along!
 
@@ -27,7 +28,7 @@ Thanks for following along!
 ::: panel-tabset
 ## Problem Statement:
 
-Below is the provided problem statement. This is what we will use as our driving focus for this analysis. 
+Below is the provided problem statement. This is what we will use as our driving focus for this analysis.
 
 > You are a Senior HR Data & Insights Consultant and have been asked to assist senior HR leadership make a decision regarding a planned policy change.
 
@@ -37,60 +38,57 @@ Below is the provided problem statement. This is what we will use as our driving
 
 ## Outcomes
 
-The following are the outcomes of this analysis. Also provided are the links to the locations of the outcomes. 
+The following are the outcomes of this analysis. Also provided are the links to the locations of the outcomes.
 
-- **What's the turnover picture?** 
-    * *tdlr;* 2022 and 2023 saw significantly higher turnover, but it's been returning back to pre-pandemic rates.
-    * Detailing the current turnover rate -> [Turnover Analysis](turnover.qmd#exit-trend)
-
-- **What's driving exits?**
-    * Are the survey responses correlated to employee exits?
-        * *tdlr;* there was a shift in reponses from 2021 to 2023 + 2025
-        * Details in survey reponses -> [Survey Analysis](survey.qmd#overall-response)
-    * Are their certain employee characteristics that are more likely to exit?
-        * *tldr;* it's more likely that ----
-        * Details of employees -> [Employee Characteristics](employee-char.qmd#overall-response)
-
-- **Where to now?**  
-    * [Next Steps](next-steps.qmd)
-    * Suggestions for additional data to capture
-    * Questions for further discussion
-
-
+-   **What's the turnover picture?**
+    -   *tdlr;* 2022 and 2023 saw significantly higher turnover, but it's been returning back to pre-pandemic rates.
+    -   Detailing the current turnover rate -\> [Turnover Analysis](turnover.qmd#exit-trend)
+-   **What's driving exits?**
+    -   Are the survey responses correlated to employee exits?
+        -   *tdlr;* there was a shift in reponses from 2021 to 2023 + 2025
+        -   Details in survey reponses -\> [Survey Analysis](survey.qmd#overall-response)
+    -   Are their certain employee characteristics that are more likely to exit?
+        -   *tldr;* it's more likely that ----
+        -   Details of employees -\> [Employee Characteristics](employee-char.qmd#overall-response)
+-   **Where to now?**
+    -   [Next Steps](next-steps.qmd)
+    -   Suggestions for additional data to capture
+    -   Questions for further discussion
 
 ## Data Soures
 
 For this analysis we will be using the following data sources:
 
 -   HRIS Data - Employee tenure and Demographics
-    * Provided by employeer
+    -   Provided by employeer
 -   HRIS Data - Employee Survey Response
-    * Provided by employeer
+    -   Provided by employeer
 -   [BLS - JOLTS](https://www.bls.gov/jlt/)
--   [BLA - Inflation (Consumer Price Index)](https://www.bls.gov/cpi/)
--   [Michigan Job](https://www.milmi.org/)
--   [Michigan Workforce Reports](https://www.michigan.gov/mdcs/quick-links/workforcereports)
--   [Nashville Workforce Reports](https://www.bls.gov/eag/eag.tn_nashville_msa.htm)
+-   [~~BLA - Inflation (Consumer Price Index)~~](https://www.bls.gov/cpi/)
+-   [~~Michigan Job~~](https://www.milmi.org/)
+-   [~~Michigan Workforce Reports~~](https://www.michigan.gov/mdcs/quick-links/workforcereports)
+-   [~~Nashville Workforce Reports~~](https://www.bls.gov/eag/eag.tn_nashville_msa.htm)
 
 ## Assumptions
 
-- Calculations
-    - Average Employees Per Month: Uses the # at the start of the month
-    - Turnover = # Resigned/ Avg Employee
+- Terminology
+    * I am equating exits = terminations = turnover 
 
-- We are extracting part time employees from the population as we would expect the turnover rate to be different for these populations
+-   Calculations
+    -   Average Employees Per Month: Uses the \# at the start of the month
+    -   Turnover = \# Resigned/ Avg Employee
 
-- For this analysis we are also going to remove Temporary employees.
+-   For this analysis we are also going to remove Temporary employees.
 
-- We recognize that there have been a large economic shift where more employees are staying at their companies, if we were to make a policy change we would want to differentiate between (and look for a causal link) between the policy and the company's turnover.
+-   We recognize that there have been a large economic shift where more employees are staying at their companies, if we were to make a policy change we would want to differentiate between (and look for a causal link) between the policy and the company's turnover.
 
-- Identify top performers as: 
-    * those with a performance rating of 4 or 5
+-   Identify top performers as:
 
-- Assuming that employees that are that employees with the effective date of the current job are _____
+    -   those with a performance rating of 4 or 5
 
-- Jackson's NAICS code is 524113 (designates Direct Life Insurance Carriers)
-    * falls under the "Finance and Insurance" sector. (Sector 52)
+-   Assuming that employees that are that employees with the effective date of the current job are \_\_\_\_\_
 
+-   Jackson's NAICS code is 524113 (designates Direct Life Insurance Carriers)
 
+    -   falls under the "Finance and Insurance" sector. (Sector 52)
 :::

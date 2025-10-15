@@ -34,7 +34,7 @@ format:
     css: styles.css
     toc: true
     # fontcolor: "#333333"
-    linkcolor: "#007bff"
+    linkcolor: "#5a2158"
 
 
 

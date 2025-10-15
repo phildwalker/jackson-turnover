@@ -16,11 +16,30 @@ This is a space where we'd be interested to tease out the difference's between d
 #| warning: false
 #| error: false
 library(tidyverse)
-
 source(here::here("src", "_initial_settings.R"))
 
+emp_clean <- readRDS(file = here::here("data", "employee.RDS"))
 surv <- readRDS(file = here::here("data", "survey_long.RDS"))
 
+most_recnt <- 
+  surv |> 
+  group_by(ID, Question_Type) |> 
+  filter(Year == max(Year)) |> 
+  pivot_wider(names_from = Question_Type, values_from = Response) |> 
+  right_join( ,y= emp_clean |> select(ID, Term_Type),
+              by = join_by(ID)) |> 
+  mutate(term = ifelse(is.na(Term_Type), 0, 1))
+
+
+
+```
+
+# Survey Responses
+
+
+## Total Reponses
+
+```{r}
 surv |> 
   ggplot(aes(Response))+
   geom_bar(stat = "count", aes(fill = Year), position = "dodge")+
@@ -37,3 +56,27 @@ surv |>
 ```
 
 We see a shift in responses from more negative in 2021 -> more positive in 2025
+
+## Responses vs Turnover 
+
+All 4 of the survey repsonses are decently correlated with terminations.
+
+* Because the correlations are negative, we would say that in general that the lower the response (closer to strongly disagree) that the higher the likelihood of an employee exiting. 
+
+```{r}
+
+# Calculate Spearman's rank correlation for each ordinal variable
+# correlation is [-1,1]
+
+# cor_s1 <- cor.test(most_recnt$term, most_recnt$OverallSat, method = "spearman")$estimate
+# cor_s1
+
+correlations <- most_recnt %>%
+  rename(Surv_OverallSat = OverallSat, Surv_Recommend = Recommend, Surv_ThinkLeave = ThinkLeave, Surv_Pride = Pride) |> 
+  select(starts_with("Surv_")) %>% # Select all ordinal variables
+  map_df(~cor(most_recnt$term, ., method = "spearman", use = "pairwise.complete.obs"), 
+         .id = "variable") %>%
+  select(-ID)
+
+```
+

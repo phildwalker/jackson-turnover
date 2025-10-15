@@ -4,7 +4,7 @@ library(patchwork)
 
 theme_set(theme_bw())
 
-jcolor <- c("#5a2158", "#EF0029", "#983560", "#cb575e", "#ee8757", "#febe57", "#f9f871")
+jcolor <- c("#5a2158","#8d8c8cff", "#EF0029",  "#ee5497ff", "#f56871ff", "#ee8757", "#febe57", "#b9f971ff")
 
 
 set_flextable_defaults(
