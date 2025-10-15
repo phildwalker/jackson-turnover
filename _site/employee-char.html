@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Turnover – Employee Turnover Analysis</title>
+<title>Employee Characteristics – Employee Turnover Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -132,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./turnover.html" aria-current="page"> 
+    <a class="nav-link" href="./turnover.html"> 
 <span class="menu-text">Turnover Details</span></a>
   </li>  
   <li class="nav-item">
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Survey Reponses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./employee-char.html"> 
+    <a class="nav-link active" href="./employee-char.html" aria-current="page"> 
 <span class="menu-text">Employee Characteristics</span></a>
   </li>  
   <li class="nav-item">
@@ -178,9 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#trend-of-exits" id="toc-trend-of-exits" class="nav-link active" data-scroll-target="#trend-of-exits">Trend of Exits</a></li>
-  <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link" data-scroll-target="#analysis-overview">Analysis Overview</a></li>
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link active" data-scroll-target="#analysis-overview">Analysis Overview</a></li>
   </ul>
 </nav>
     </div>
@@ -189,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Turnover</h1>
+<h1 class="title">Employee Characteristics</h1>
 </div>
 
 
@@ -206,24 +204,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="trend-of-exits" class="level1">
-<h1>Trend of Exits</h1>
-<p>To start our understanding of employee turnover trends we are first looking at the monthly exits trended from 2018 to now and then we have calculated the year turnover rates.</p>
+<p>This is where we will provide an analysis into the HRIS data in order to determine if we see if there are certain employee charatistics make are indicitive of whether or not an employee is more likely to leave.</p>
+<p>This is a space where we’d be interested to tease out the difference’s between different demographics and whether or not their responses are indicitive of different behaviors.</p>
+<p>We are looking at the following descriptors:</p>
 <ul>
-<li>We see the trend of exits (as well as yearly turnover rates) saw a significant change from pre-pandemic levels during both 2022 and 2023.</li>
-<li>While 2025 YTD turnover is still higher than pre-pandemic levels, the average monthly levels have significantly decreased.</li>
+<li>Deomgraphics:
+<ul>
+<li>Gender</li>
+<li>Race (collapsed into -&gt; white/non-white)</li>
+</ul></li>
+<li>Role Details:
+<ul>
+<li>Full Time vs Part Time</li>
+<li>Department</li>
+<li>Location</li>
+</ul></li>
+<li>Performance:
+<ul>
+<li>Employee Performance</li>
+<li>Most Recent Merit</li>
+</ul></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="turnover_files/figure-html/exit-trend-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>In order to understand more about the drivers of the increases in 2022 and 2023, we will then dig into the different characteristics of our employees.</p>
-</section>
 <section id="analysis-overview" class="level1">
 <h1>Analysis Overview</h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -253,89 +255,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5 Operations        468
 6 Sales             241</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  Location          n
-  &lt;chr&gt;         &lt;int&gt;
-1 Lansing, MI     798
-2 Nashville, TN   388</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Job_Level)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  Job_Level                  n
-  &lt;chr&gt;                  &lt;int&gt;
-1 Executive                121
-2 Individual Contributor   808
-3 Management               257</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Associate_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  Associate_Type     n
-  &lt;chr&gt;          &lt;int&gt;
-1 Regular         1186</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Time_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  Time_Type     n
-  &lt;chr&gt;     &lt;int&gt;
-1 Full time  1133
-2 Part time    53</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(FLSA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  FLSA           n
-  &lt;chr&gt;      &lt;int&gt;
-1 Exempt       878
-2 Non-Exempt   308</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Race_Ethnicity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 2
-  Race_Ethnicity                                n
-  &lt;chr&gt;                                     &lt;int&gt;
-1 American Indian or Alaska Native              7
-2 Asian                                       255
-3 Black or African American                   192
-4 Hispanic or Latino                          144
-5 Native Hawaiian or Other Pacific Islander     3
-6 Not Specified                                37
-7 Two or More Races                            52
-8 White (Not Hispanic or Latino)              496</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 2
-  Gender                            n
-  &lt;chr&gt;                         &lt;int&gt;
-1 Female                          463
-2 I choose not to self-identify    84
-3 Male                            615
-4 Nonbinary                        24</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(MostRecent_Performance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-  MostRecent_Performance                n
-  &lt;chr&gt;                             &lt;int&gt;
-1 Below Expectations                  385
-2 Consistently Below Expectations      61
-3 Consistently Exceeds Expectations    14
-4 Exceeds Expectations                194
-5 Meets Expectations                  532</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>termd <span class="sc">|&gt;</span> <span class="fu">count</span>(Term_Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  Term_Type       n
-  &lt;chr&gt;       &lt;int&gt;
-1 Involuntary   322
-2 Voluntary     864</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(Location)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(Job_Level)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(Associate_Type)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(Time_Type)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(FLSA)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(Race_Ethnicity)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(Gender)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(MostRecent_Performance)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># termd |&gt; count(Term_Type)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -344,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="turnover_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center figure-img" style="width:100.0%;height:40.0%"></p>
+<p><img src="employee-char_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center figure-img" style="width:100.0%;height:40.0%"></p>
 </figure>
 </div>
 </div>
@@ -360,11 +288,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="notes" class="level1">
-<h1>Notes</h1>
-<p>The initial exploratory data analysis (EDA) was performed within ‘src/clean_employee.R’ which can be found within the source code.</p>
-<p>I built “monthly_employee.R” as a function that could be called to get the active number of employees per month given a dataset like this HRIS sample. This would allow for a quick recreated of monthly view when we are testing future policy impacts.</p>
 
 
 </section>

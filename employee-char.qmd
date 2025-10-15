@@ -1,12 +1,16 @@
 ---
-title: "Turnover"
+title: "Employee Characteristics"
 format:
   html:
-    fig-width: 10
+    fig-width: 8
     fig-height: 6
 ---
 
-```{r, init}
+This is where we will provide an analysis into the HRIS data in order to determine if we see if there are certain employee charatistics make are indicitive of whether or not an employee is more likely to leave.
+
+This is a space where we'd be interested to tease out the difference's between different demographics and whether or not their responses are indicitive of different behaviors.
+
+```{r, char-init}
 #| echo: false
 #| warning: false
 #| error: false
@@ -17,29 +21,22 @@ source(here::here("src", "monthly_employee.R"))
 
 emp_clean <- readRDS(file = here::here("data", "employee.RDS"))
 emp_dates <- readRDS(file = here::here("data", "employee_dates.RDS"))
-
 ```
 
-# Trend of Exits 
+We are looking at the following descriptors: 
 
-To start our understanding of employee turnover trends we are first looking at the monthly exits trended from 2018 to now and then we have calculated the year turnover rates. 
+* Deomgraphics: 
+  * Gender
+  * Race (collapsed into -> white/non-white)
+* Role Details:
+  * Full Time vs Part Time
+  * Department
+  * Location
+* Performance: 
+  * Employee Performance
+  * Most Recent Merit
 
-* We see the trend of exits (as well as yearly turnover rates) saw a significant change from pre-pandemic levels during both 2022 and 2023.
-* While 2025 YTD turnover is still higher than pre-pandemic levels, the average monthly levels have significantly decreased.
-
-
-```{r, exit-trend}
-#| echo: false
-#| warning: false
-#| error: false
-#| fig-height: 4
-#| fig-align: center
-source(here::here("src", "trend_exits_turnover.R"))
-
-  pw2
-```
-
-
+  
 In order to understand more about the drivers of the increases in 2022 and 2023, we will then dig into the different characteristics of our employees. 
 
 # Analysis Overview
@@ -59,15 +56,15 @@ termd <- emp_dates |>
   filter(ActiveEmp == 0) 
 
 termd |> count(Department)
-termd |> count(Location)
-termd |> count(Job_Level)
-termd |> count(Associate_Type)
-termd |> count(Time_Type)
-termd |> count(FLSA)
-termd |> count(Race_Ethnicity)
-termd |> count(Gender)
-termd |> count(MostRecent_Performance)
-termd |> count(Term_Type)
+# termd |> count(Location)
+# termd |> count(Job_Level)
+# termd |> count(Associate_Type)
+# termd |> count(Time_Type)
+# termd |> count(FLSA)
+# termd |> count(Race_Ethnicity)
+# termd |> count(Gender)
+# termd |> count(MostRecent_Performance)
+# termd |> count(Term_Type)
 
 ```
 
@@ -137,10 +134,3 @@ What's the yearly turnover rates from 2018 to now
 -   Detailing the current tur
 
 :::
-
-
-# Notes
-
-The initial exploratory data analysis (EDA) was performed within 'src/clean_employee.R' which can be found within the source code.
-
-I built "monthly_employee.R" as a function that could be called to get the active number of employees per month given a dataset like this HRIS sample. This would allow for a quick recreated of monthly view when we are testing future policy impacts.
