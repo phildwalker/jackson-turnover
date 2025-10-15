@@ -40,6 +40,10 @@ most_recnt <-
 ## Total Reponses
 
 ```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
 surv |> 
   ggplot(aes(Response))+
   geom_bar(stat = "count", aes(fill = Year), position = "dodge")+
@@ -63,7 +67,11 @@ All 4 of the survey repsonses are decently correlated with terminations.
 
 * Because the correlations are negative, we would say that in general that the lower the response (closer to strongly disagree) that the higher the likelihood of an employee exiting. 
 
-```{r}
+```{r, correlation-spearman}
+#| echo: false
+#| warning: false
+#| error: false
+#| fig-cap: "Correlation of Survey Response to Termination"
 
 # Calculate Spearman's rank correlation for each ordinal variable
 # correlation is [-1,1]
@@ -78,5 +86,7 @@ correlations <- most_recnt %>%
          .id = "variable") %>%
   select(-ID)
 
+
+correlations |> flextable::flextable()
 ```
 

@@ -46,13 +46,13 @@
     "href": "survey.html#total-reponses",
     "title": "Survey Responses",
     "section": "Total Reponses",
-    "text": "Total Reponses\n\nsurv |&gt; \n  ggplot(aes(Response))+\n  geom_bar(stat = \"count\", aes(fill = Year), position = \"dodge\")+\n  scale_fill_manual(values = jcolor) +\n  facet_wrap(Question_Type ~ .)+\n  labs(title = \"Count of Responses by Year for each survey group\") + \n  theme(\n    panel.background = element_rect(fill = \"#F8F5F5\"),\n    plot.background = element_rect(fill = \"#F8F5F5\"),\n    legend.background = element_rect(fill = \"#F8F5F5\"),\n    legend.key = element_rect(fill = \"#F8F5F5\", color = \"darkgrey\")\n  )\n\n\n\n\n\n\n\n\nWe see a shift in responses from more negative in 2021 -&gt; more positive in 2025"
+    "text": "Total Reponses\n\n\n\n\n\n\n\n\n\nWe see a shift in responses from more negative in 2021 -&gt; more positive in 2025"
   },
   {
     "objectID": "survey.html#responses-vs-turnover",
     "href": "survey.html#responses-vs-turnover",
     "title": "Survey Responses",
     "section": "Responses vs Turnover",
-    "text": "Responses vs Turnover\nAll 4 of the survey repsonses are decently correlated with terminations.\n\nBecause the correlations are negative, we would say that in general that the lower the response (closer to strongly disagree) that the higher the likelihood of an employee exiting.\n\n\n# Calculate Spearman's rank correlation for each ordinal variable\n# correlation is [-1,1]\n\n# cor_s1 &lt;- cor.test(most_recnt$term, most_recnt$OverallSat, method = \"spearman\")$estimate\n# cor_s1\n\ncorrelations &lt;- most_recnt %&gt;%\n  rename(Surv_OverallSat = OverallSat, Surv_Recommend = Recommend, Surv_ThinkLeave = ThinkLeave, Surv_Pride = Pride) |&gt; \n  select(starts_with(\"Surv_\")) %&gt;% # Select all ordinal variables\n  map_df(~cor(most_recnt$term, ., method = \"spearman\", use = \"pairwise.complete.obs\"), \n         .id = \"variable\") %&gt;%\n  select(-ID)\n\nAdding missing grouping variables: `ID`"
+    "text": "Responses vs Turnover\nAll 4 of the survey repsonses are decently correlated with terminations.\n\nBecause the correlations are negative, we would say that in general that the lower the response (closer to strongly disagree) that the higher the likelihood of an employee exiting.\n\n\n\nSurv_OverallSatSurv_RecommendSurv_ThinkLeaveSurv_Pride-0.498129-0.4852852-0.4744403-0.4339497\nCorrelation of Survey Response to Termination"
   }
 ]
