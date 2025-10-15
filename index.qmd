@@ -64,6 +64,7 @@ For this analysis we will be using the following data sources:
 -   HRIS Data - Employee Survey Response
     -   Provided by employeer
 -   [BLS - JOLTS](https://www.bls.gov/jlt/)
+    - filtered down to Finance and Insurance category -> looks at nationwide rates
 -   [~~BLA - Inflation (Consumer Price Index)~~](https://www.bls.gov/cpi/)
 -   [~~Michigan Job~~](https://www.milmi.org/)
 -   [~~Michigan Workforce Reports~~](https://www.michigan.gov/mdcs/quick-links/workforcereports)
@@ -72,7 +73,8 @@ For this analysis we will be using the following data sources:
 ## Assumptions
 
 - Terminology
-    * I am equating exits = terminations = turnover 
+    * I am equating exits = terminations = turnover  = quits = separation
+    * I know that the BLS distinquishes between layoffs/ terminations (involuntary) and quits (voluntary)
 
 -   Calculations
     -   Average Employees Per Month: Uses the \# at the start of the month

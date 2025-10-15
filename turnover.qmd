@@ -43,7 +43,28 @@ source(here::here("src", "trend_exits_turnover.R"))
 
 We want to understand how Jackson compares to the larger economic forces in order to assess if Jackson turnover generally aligns. 
 
+* We do see that the job openings have slowed in the Finance and Insurance industry since the start of 2024, and the quit rate was higher in 2022 and 2023 than before or after that time frame.
+
 ```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| out-width: "100%"
+#| out-height: "40%"
+#| fig-align: center
+
+source(here::here("src", "jolts_data.R"))
+
+ bls_p1 +
+    scale_x_date(date_breaks = "1 year", date_labels = "%Y") + 
+  scale_color_manual(values = jcolor) +
+  labs(x = NULL, y= NULL, color = NULL) + 
+  theme(
+    panel.background = element_rect(fill = "#F8F5F5"),
+    plot.background = element_rect(fill = "#F8F5F5"),
+    legend.background = element_rect(fill = "#F8F5F5"),
+    legend.key = element_rect(fill = "#F8F5F5", color = "darkgrey")
+  )
 
 ```
 
