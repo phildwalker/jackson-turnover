@@ -27,7 +27,7 @@ This is a space where we'd be interested to tease out the difference's between d
 #| warning: false
 #| error: false
 library(tidyverse)
-library(correlationfunnel)
+# library(correlationfunnel)
 
 source(here::here("src", "_initial_settings.R"))
 source(here::here("src", "monthly_employee.R"))
@@ -42,12 +42,14 @@ We are looking at the following descriptors:
   * Gender
   * Race (collapsed into -> white/non-white)
 * Role Details:
-  * Full Time vs Part Time
+  * Exempt vs Non-Exempt
+  * Job Level
   * Department
   * Location
 * Performance: 
   * Employee Performance
   * Most Recent Merit
+  * Compensation
 
   
 In order to understand more about the drivers of the increases in 2022 and 2023, we will then dig into the different characteristics of our employees. 
@@ -63,21 +65,6 @@ What population is seeing the largest impact?
 * We're going to use an anova to 
 
 ```{r}
-termd <- emp_dates |> 
-  filter(Term_Date >= as.Date("2018-01-01")) |> 
-  left_join(., y=emp_clean, by = join_by(ID))  |> 
-  filter(ActiveEmp == 0) 
-
-termd |> count(Department)
-# termd |> count(Location)
-# termd |> count(Job_Level)
-# termd |> count(Associate_Type)
-# termd |> count(Time_Type)
-# termd |> count(FLSA)
-# termd |> count(Race_Ethnicity)
-# termd |> count(Gender)
-# termd |> count(MostRecent_Performance)
-# termd |> count(Term_Type)
 
 ```
 
