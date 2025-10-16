@@ -7,7 +7,7 @@ format:
 ---
 
 
-::: {.callout-caution collapse="true"}
+::: {.callout-important collapse="true"}
 ## Additional Analysis: Correlation to Voluntary
 
 Want to calculate a couple of metrics
