@@ -54,6 +54,11 @@ The following are the outcomes of this analysis. Also provided are the links to 
     -   Are their certain employee characteristics that are more likely to exit?
         -   *tldr;* it's more likely that ----
         -   Details of employees -\> [Employee Characteristics](employee-char.qmd#overall-response)
+-   **What's the cost to implement this proposed policy?**
+    -   *tldr;* The projected cost would be between $11.6M - $13M 
+    -   Details of policy cost -\> [Policy Cost](policy-cost.qmd)   
+    -   Project policy impact -\> [Policy Impact](impact.qmd)   
+
 -   **Where to now?**
     -   [Next Steps](next-steps.qmd)
     -   Suggestions for additional data to capture
@@ -95,6 +100,6 @@ For this analysis we will be using the following data sources:
 -   Assuming that employees that are that employees with the effective date of the current job are \_\_\_\_\_
 
 -   Jackson's NAICS code is 524113 (designates Direct Life Insurance Carriers)
-
     -   falls under the "Finance and Insurance" sector. (Sector 52)
+    
 :::

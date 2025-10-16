@@ -60,7 +60,8 @@ emp_clean |>
 ```
 
 
-Therefore to raise everyone's pay by 6% the total cost would be between $11.6M - $13M 
+Therefore to raise everyone's pay by 6% the total cost would be between **$11.6M - $13M** 
 
 * The cost for 6% raises is $9.3M
 * The additional employeer cost due to payroll taxes / benfits: between $2.3M and $3.7M
+

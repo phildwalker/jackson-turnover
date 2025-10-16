@@ -27,6 +27,7 @@ This is a space where we'd be interested to tease out the difference's between d
 #| warning: false
 #| error: false
 library(tidyverse)
+library(correlationfunnel)
 
 source(here::here("src", "_initial_settings.R"))
 source(here::here("src", "monthly_employee.R"))
