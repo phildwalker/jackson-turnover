@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Next Steps – Employee Turnover Analysis</title>
+<title>Policy Cost – Employee Turnover Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -67,6 +102,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
 
 
 <link rel="stylesheet" href="styles.css">
@@ -116,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./policy-cost.html"> 
+    <a class="nav-link active" href="./policy-cost.html" aria-current="page"> 
 <span class="menu-text">Policy Cost Estimation</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -165,9 +204,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#additonal-information-to-capture" id="toc-additonal-information-to-capture" class="nav-link active" data-scroll-target="#additonal-information-to-capture">Additonal Information to Capture</a></li>
-  <li><a href="#testing-hypotheses" id="toc-testing-hypotheses" class="nav-link" data-scroll-target="#testing-hypotheses">Testing Hypotheses</a></li>
-  <li><a href="#questions-to-consider" id="toc-questions-to-consider" class="nav-link" data-scroll-target="#questions-to-consider">Questions to consider:</a></li>
+  <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link active" data-scroll-target="#analysis-overview">Analysis Overview</a></li>
+  <li><a href="#analysis-overview-1" id="toc-analysis-overview-1" class="nav-link" data-scroll-target="#analysis-overview-1">Analysis Overview</a></li>
   </ul>
 </nav>
     </div>
@@ -176,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Next Steps</h1>
+<h1 class="title">Policy Cost</h1>
 </div>
 
 
@@ -193,34 +231,57 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>So what are our next steps from here?</p>
-<section id="additonal-information-to-capture" class="level1">
-<h1>Additonal Information to Capture</h1>
-<ol type="1">
-<li>Would love to capture more information about exits to better track. One that would be interesting is capturing when we have ‘regrettable loss’, or better detailing what characteristics would make an exit more regettable for the organization.</li>
-<li>Would be interesting to bring in the exit interview data to augment the analysis to dig further into employee’s decisions to leave.</li>
-<li>For our employee enagement survey, it would be helpful to think about gathering more detailed feedback around employee perceptions. (ie something like: “are you fairly compensated for the work you perform?”, with the goal of understanding how an across the board raise might impact their perceptions).</li>
-</ol>
-</section>
-<section id="testing-hypotheses" class="level1">
-<h1>Testing Hypotheses</h1>
-<ol type="1">
-<li>We would want to measure the turnover after we make this policy change to determine if it had the intended affect.
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Additional Analysis: Correlation to Voluntary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Formula for total cost&nbsp;To accurately budget for the increase, calculate the following for the entire company or for the employees receiving the raise:(()(1+)-((1+)))The “Burden Rate” represents the cost of employer-paid benefits and taxes, usually estimated between 25% and 40% of an employee’s base salary.&nbsp;</p>
+</div>
+</div>
+</div>
+<section id="analysis-overview" class="level1">
+<h1>Analysis Overview</h1>
+<p>Utilizing the current active employee population, we need to calculate the following items:</p>
 <ul>
-<li>Know that this would be a long feedback loop as we would want to wait at least a month before testing again.</li>
-<li>Could utilize a chi-sqare test to test for differences.</li>
-</ul></li>
-</ol>
+<li>The current base compensation (I have convert the hourly workers to year compensation)</li>
+<li>New compensation with 6% raise</li>
+<li>Burden rate (estimated between 25% and 40% of employee’s base salary)</li>
+</ul>
 </section>
-<section id="questions-to-consider" class="level1">
-<h1>Questions to consider:</h1>
-<ol type="1">
-<li>Would a 6% raise even impact employee satisfaction
+<section id="analysis-overview-1" class="level1">
+<h1>Analysis Overview</h1>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>emp_clean <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TotalCompensation =</span> <span class="fu">sum</span>(EffectiveSalary, <span class="at">na.rm=</span>T)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NewComp =</span> TotalCompensation <span class="sc">*</span> <span class="fl">1.06</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">IncreaseDuetoRaise =</span> NewComp <span class="sc">-</span> TotalCompensation) <span class="sc">|&gt;</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Burden_25 =</span> IncreaseDuetoRaise <span class="sc">*</span> <span class="fl">0.25</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">Burden_40 =</span> IncreaseDuetoRaise <span class="sc">*</span> <span class="fl">0.4</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TotalCost_25 =</span> Burden_25 <span class="sc">+</span> IncreaseDuetoRaise,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">TotalCost_40 =</span> Burden_40 <span class="sc">+</span> IncreaseDuetoRaise) <span class="sc">|&gt;</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>) <span class="sc">|&gt;</span>   </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-294572de{}.cl-2935b43e{font-family:'Arial';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2935b452{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-293c8f84{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:6pt;padding-top:6pt;padding-left:6pt;padding-right:6pt;line-height: 1;background-color:transparent;}.cl-293c8f8e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:6pt;padding-top:6pt;padding-left:6pt;padding-right:6pt;line-height: 1;background-color:transparent;}.cl-293cb522{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-293cb52c{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-293cb536{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-293cb537{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-293cb538{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-293cb539{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-293cb540{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-293cb541{width:0.75in;background-color:rgba(248, 245, 245, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-294572de"><thead><tr style="overflow-wrap:break-word;"><th class="cl-293cb522"><p class="cl-293c8f84"><span class="cl-2935b43e">name</span></p></th><th class="cl-293cb52c"><p class="cl-293c8f8e"><span class="cl-2935b43e">value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-293cb536"><p class="cl-293c8f84"><span class="cl-2935b452">TotalCompensation</span></p></td><td class="cl-293cb537"><p class="cl-293c8f8e"><span class="cl-2935b452">155,171,707</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-293cb538"><p class="cl-293c8f84"><span class="cl-2935b452">NewComp</span></p></td><td class="cl-293cb539"><p class="cl-293c8f8e"><span class="cl-2935b452">164,482,009</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-293cb538"><p class="cl-293c8f84"><span class="cl-2935b452">IncreaseDuetoRaise</span></p></td><td class="cl-293cb539"><p class="cl-293c8f8e"><span class="cl-2935b452">9,310,302</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-293cb538"><p class="cl-293c8f84"><span class="cl-2935b452">Burden_25</span></p></td><td class="cl-293cb539"><p class="cl-293c8f8e"><span class="cl-2935b452">2,327,576</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-293cb538"><p class="cl-293c8f84"><span class="cl-2935b452">Burden_40</span></p></td><td class="cl-293cb539"><p class="cl-293c8f8e"><span class="cl-2935b452">3,724,121</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-293cb538"><p class="cl-293c8f84"><span class="cl-2935b452">TotalCost_25</span></p></td><td class="cl-293cb539"><p class="cl-293c8f8e"><span class="cl-2935b452">11,637,878</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-293cb540"><p class="cl-293c8f84"><span class="cl-2935b452">TotalCost_40</span></p></td><td class="cl-293cb541"><p class="cl-293c8f8e"><span class="cl-2935b452">13,034,423</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p>Therefore to raise everyone’s pay by 6% the total cost would be between $11.6M - $13M</p>
 <ul>
-<li>How would it compare to the cost of living due to inflation?</li>
-<li>Would questions in the employee engagement survey could capture employee perception here?</li>
-</ul></li>
-</ol>
+<li>The cost for 6% raises is $9.3M</li>
+<li>The additional employeer cost due to payroll taxes / benfits: between $2.3M and $3.7M</li>
+</ul>
 
 
 </section>

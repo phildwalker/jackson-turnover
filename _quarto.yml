@@ -10,14 +10,22 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: turnover.qmd
-        text: Turnover Details
-      - href: survey.qmd
-        text: Survey Reponses
-      - href: employee-char.qmd
-        text: Employee Characteristics
-      - href: next-steps.qmd
-        text: Next Steps
+      - text: Turnover Landscape
+        menu: 
+        - href: turnover.qmd
+          text: Turnover Details
+        - href: survey.qmd
+          text: Survey Reponses
+        - href: employee-char.qmd
+          text: Employee Characteristics
+      - text: Policy Cost Estimation
+        href: policy-cost.qmd
+      - text: Policy Impact
+        menu:
+        - href: impact.qmd
+          text: Projected Impact
+        - href: next-steps.qmd
+          text: Next Steps
     tools:
       - icon: github
         menu:

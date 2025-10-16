@@ -1,0 +1,66 @@
+---
+title: "Policy Cost"
+format:
+  html:
+    fig-width: 8
+    fig-height: 6
+---
+
+
+::: {.callout-important collapse="true"}
+## Additional Analysis: Correlation to Voluntary
+
+Formula for total cost To accurately budget for the increase, calculate the following for the entire company or for the employees receiving the raise:\((\text{Total\ Current\ Base\ Salary}\times 1.06)\times (1+\text{Burden\ Rate})-(\text{Total\ Current\ Base\ Salary}\times (1+\text{Burden\ Rate}))\)The "Burden Rate" represents the cost of employer-paid benefits and taxes, usually estimated between 25% and 40% of an employee's base salary. 
+
+:::
+
+# Analysis Overview
+
+Utilizing the current active employee population, we need to calculate the following items:
+
+* The current base compensation (I have convert the hourly workers to year compensation)
+* New compensation with 6% raise
+* Burden rate (estimated between 25% and 40% of employee's base salary)
+
+```{r, char-init}
+#| echo: false
+#| warning: false
+#| error: false
+library(tidyverse)
+
+source(here::here("src", "_initial_settings.R"))
+
+emp_clean <- readRDS(file = here::here("data", "employee.RDS")) |> 
+  filter(!is.na(Term_Date)) 
+
+```
+
+
+
+# Analysis Overview
+
+```{r}
+#| echo: true
+#| warning: false
+#| error: false
+#| code-fold: true
+
+emp_clean |> 
+  summarise(TotalCompensation = sum(EffectiveSalary, na.rm=T)) |> 
+  ungroup() |> 
+  mutate(NewComp = TotalCompensation * 1.06) |> 
+  mutate(IncreaseDuetoRaise = NewComp - TotalCompensation) |> 
+  mutate(Burden_25 = IncreaseDuetoRaise * 0.25,
+          Burden_40 = IncreaseDuetoRaise * 0.4) |> 
+  mutate(TotalCost_25 = Burden_25 + IncreaseDuetoRaise,
+          TotalCost_40 = Burden_40 + IncreaseDuetoRaise) |> 
+  pivot_longer(cols = 1:7) |>   
+  flextable()
+
+```
+
+
+Therefore to raise everyone's pay by 6% the total cost would be between $11.6M - $13M 
+
+* The cost for 6% raises is $9.3M
+* The additional employeer cost due to payroll taxes / benfits: between $2.3M and $3.7M

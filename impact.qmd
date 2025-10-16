@@ -1,0 +1,46 @@
+---
+title: "Policy Impact"
+format:
+  html:
+    fig-width: 8
+    fig-height: 6
+---
+
+
+::: {.callout-important collapse="true"}
+## Additional Analysis: Cost of Living
+
+According to the MIT Living Wage Calculator:
+
+For a family of 4, the salary to live comfortably would be:
+
+* In Lansing, MI: $95k
+* In Nashville, TN: $110k
+
+
+:::
+
+# Analysis Overview
+
+```{r, char-init}
+#| echo: false
+#| warning: false
+#| error: false
+library(tidyverse)
+
+source(here::here("src", "_initial_settings.R"))
+source(here::here("src", "monthly_employee.R"))
+
+emp_clean <- readRDS(file = here::here("data", "employee.RDS"))
+emp_dates <- readRDS(file = here::here("data", "employee_dates.RDS"))
+```
+
+There's a couple of ways to interpret this question.... 
+
+* We are looking to answer if we generally see a decrease in voluntary turnover as a result of higher raises
+
+* Would an increase of 6% get an employee to the general cost of living in their respective areas?
+  * Cost of living would be dependent on the employee's living situation but for the stake of this analysis we are assuming that 
+
+* Are high performers (as Exceeds or Consistently Exceeds Expectations) 
+

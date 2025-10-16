@@ -8,7 +8,8 @@ jcolor <- c("#5a2158", "#983560", "#cb575e", "#ee8757", "#febe57", "#f9f871")
 source(here::here("src", "monthly_employee.R"))
 
 employee <- readxl::read_xlsx(here::here("data", "Senior HR Data & Insights Consultant - Work Sample - HRIS Data.xlsx")) |> 
-  filter(!Associate_Type %in% c("Temporary"))
+  filter(!Associate_Type %in% c("Temporary"),
+          !Time_Type %in% c("Part time"))
 
 
 #--- is ID unique? -- yes
@@ -25,6 +26,8 @@ employee |> count(FLSA)
 employee |> count(Department) # no nulls here
 employee |> count(Job_Level) # assuming that executive is above management
 
+
+employee |> count(Time_Type)
 
 # cleaning the data to then have a clean version to use later
 emp_clean <- 
