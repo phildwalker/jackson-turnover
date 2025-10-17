@@ -71,6 +71,8 @@ For this analysis we will be using the following data sources:
 -   BLS - Consumer Price Index (CPI) + Employement Cost Index (ECI)
     - CPI is often used to characterize the inflation rate
     - ECI aims to capture the change in the cost of labor (eg wages, salaries, benefits)
+
+    
 <!-- -   [~~BLA - Inflation (Consumer Price Index)~~](https://www.bls.gov/cpi/)
 -   [~~Michigan Job~~](https://www.milmi.org/)
 -   [~~Michigan Workforce Reports~~](https://www.michigan.gov/mdcs/quick-links/workforcereports)
