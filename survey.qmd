@@ -6,20 +6,13 @@ format:
     fig-height: 6
 ---
 
-This is where we will provide an analysis into the survey responses in order to determine if we see a correlation between survey responses and the ultimately the employee's decision to leave the company or not
-
-
-This is a space where we'd be interested to tease out the difference's between different demographics and whether or not their responses are indicitive of different behaviors.
-
-
 ::: {.callout-important collapse="true"}
 ## Additional Analysis: Correlation to Voluntary
 
 It would be interesting to add a view into if the survery responses are more connected to voluntary or involuntary turnover.
 
-It's possible that both groups are unsatisfied but it you would want to know if one of the survery response is more connected to a certain group or not.
-
-It's also possible that the involuntary turnover employees were statisfied and there were more caught offguard as a result of their terminations
+* It's possible that both groups are unsatisfied but it you would want to know if one of the survery response is more connected to a certain group or not.
+* It's also possible that the involuntary turnover employees were statisfied and there were more caught off-guard as a result of their terminations
 
 :::
 
@@ -48,7 +41,7 @@ most_recnt <-
 
 # Survey Responses
 
-## Note
+### Note 
 The Engagement Data file contains associate responses to four survey items.
 
 * OverallSat_[Year] – Overall, I am extremely satisfied with Jackson as a place to work.
@@ -64,7 +57,7 @@ Engagement survey items were rated using a 5-point rating scale:
 * 2 = Disagree
 * 1 = Strongly Disagree
 
-## Survey Response Overall
+### Survey Response Results
 
 ```{r}
 #| echo: false

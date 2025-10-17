@@ -85,7 +85,7 @@ source(here::here("src", "jolts_data.R"))
 
 Interestingly we see that both voluntary and involuntary turnover increases saw spikes in 2022 and 2023, with the levels going back down in 2024 and 2025. 
 
-* This would seem to indicate that there were both significant layoffs in these two years as well as significant 
+* This would seem to indicate that there were both significant layoffs in these two years as well as significant amount of employees who voluntarily quit. 
 
 ```{r}
 #| echo: false
@@ -145,8 +145,5 @@ turnover_month |>
 
 
 
-# Notes
-
-The initial exploratory data analysis (EDA) was performed within 'src/clean_employee.R' which can be found within the source code.
-
+## Notes
 I built "monthly_employee.R" as a function that could be called to get the active number of employees per month given a dataset like this HRIS sample. This would allow for a quick recreated of monthly view when we are testing future policy impacts.

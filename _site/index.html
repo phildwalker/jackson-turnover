@@ -203,15 +203,10 @@ Note from Phil
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Presentation last built on: 2025-10-16</code></pre>
-</div>
-</div>
-<p>I am aiming to provide a clear and instructive analysis to Sr Leadership, mixing both written prose and visuals to provide an artifact for later viewing as well as a tool to center the conversation for this decision. I will start with the high level recommendation and then provide the steps for how we get there, knowing that depending on the leader’s availability, sometimes there is only time for the analysis and sometimes it’s desired to know how we got to the answer.</p>
-<p>I have intentionally designed this to be a code driven analysis in order to ensure that both the analysis is <strong>reproducible</strong> as well as that the code is <strong>reusable</strong>. It has been a common occurance for me where I have provided an analysis, we’ve made a decision and then a year later we want to evaluate the results. By this solution being code based, we are able to quickly recreate the analysis and update with the necessary data without having to wonder if some data was omited due to outliers or if we intentionally just focused on a specific population.</p>
-<p>Because this presentation is meant for Sr Leadership I have intentionally removed most code, except for situations where it would be instructive or the detailed appendix. If you would like to review the code, please visit the code repository on Github by clicking on the icon on the top right and navigating to the “Source Code” link.</p>
-<p>Thanks for joining as we analyze the turnover data!</p>
+<p>I aim to provide a clear and instructive analysis for senior leadership, combining written insights with visuals to create both a lasting reference and a tool to guide discussion around this decision. I will begin with the high-level recommendation, followed by the steps that lead to it, recognizing that depending on leadership’s availability, there may be time only for the key findings or, alternatively, interest in understanding the full analytical process.</p>
+<p>This analysis is intentionally <strong>code-driven</strong> to ensure it is both <strong>reproducible</strong> and <strong>reusable</strong>. I’ve often encountered situations where, after an analysis leads to a decision, we later want to revisit the results. By structuring this work in code, we can easily recreate the analysis and refresh it with updated data—without worrying about whether any data was previously omitted or if a particular subset was intentionally emphasized.</p>
+<p>Because this presentation is designed for senior leadership, I have excluded most of the underlying code, except in cases where it adds instructional value or appears in the detailed appendix. If you’d like to review the full code, please visit the GitHub repository by clicking the icon in the top right and selecting the <strong>“Source Code”</strong> link.</p>
+<p>Thank you for joining as we explore the turnover data!</p>
 <p>-phil walker</p>
 </div>
 </div>
@@ -251,7 +246,7 @@ Note from Phil
 </ul></li>
 <li>Are their certain employee characteristics that are more likely to exit?
 <ul>
-<li><em>tldr;</em> it’s more likely that —-</li>
+<li><em>tldr;</em> The strongest correlate to exits was the most recent performance rating.</li>
 <li>Details of employees -&gt; <a href="./employee-char.html#overall-response">Employee Characteristics</a></li>
 </ul></li>
 </ul></li>
@@ -285,31 +280,30 @@ Note from Phil
 <ul>
 <li>filtered down to Finance and Insurance category -&gt; looks at nationwide rates</li>
 </ul></li>
-<li><a href="https://www.bls.gov/cpi/"><del>BLA - Inflation (Consumer Price Index)</del></a></li>
+<li>BLS - Consumer Price Index (CPI) + Employement Cost Index (ECI)
+<ul>
+<li>CPI is often used to characterize the inflation rate</li>
+<li>ECI aims to capture the change in the cost of labor (eg wages, salaries, benefits) &lt;!– - <a href="https://www.bls.gov/cpi/"><del>BLA - Inflation (Consumer Price Index)</del></a></li>
+</ul></li>
 <li><a href="https://www.milmi.org/"><del>Michigan Job</del></a></li>
 <li><a href="https://www.michigan.gov/mdcs/quick-links/workforcereports"><del>Michigan Workforce Reports</del></a></li>
-<li><a href="https://www.bls.gov/eag/eag.tn_nashville_msa.htm"><del>Nashville Workforce Reports</del></a></li>
+<li><a href="https://www.bls.gov/eag/eag.tn_nashville_msa.htm"><del>Nashville Workforce Reports</del></a> –&gt;</li>
 </ul>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <ul>
 <li><p>Terminology</p>
 <ul>
-<li>I am equating exits = terminations = turnover = quits = separation</li>
-<li>I know that the BLS distinquishes between layoffs/ terminations (involuntary) and quits (voluntary)</li>
+<li>Across the analysis, I am equating exits = terminations = turnover = quits = separation</li>
+<li>While, I know that the BLS distinquishes between layoffs/ terminations (involuntary) and quits (voluntary), I decided to utilize a more conversational tone.</li>
 </ul></li>
 <li><p>Calculations</p>
 <ul>
 <li>Average Employees Per Month: Uses the # at the start of the month</li>
 <li>Turnover = # Resigned/ Avg Employee</li>
+<li>As noted in the instructions, I am using 2080 hr as FTE when converting hourly rate to a yearly amount.</li>
 </ul></li>
 <li><p>For this analysis we are also going to remove Temporary employees.</p></li>
-<li><p>We recognize that there have been a large economic shift where more employees are staying at their companies, if we were to make a policy change we would want to differentiate between (and look for a causal link) between the policy and the company’s turnover.</p></li>
-<li><p>Identify top performers as:</p>
-<ul>
-<li>those with a performance rating of 4 or 5</li>
-</ul></li>
-<li><p>Assuming that employees that are that employees with the effective date of the current job are _____</p></li>
 <li><p>Jackson’s NAICS code is 524113 (designates Direct Life Insurance Carriers)</p>
 <ul>
 <li>falls under the “Finance and Insurance” sector. (Sector 52)</li>

@@ -20,29 +20,16 @@ For a family of 4, the salary to live comfortably would be:
 
 :::
 
-# Analysis Overview
+# Projected Impact
 
 ```{r, char-init}
 #| echo: false
 #| warning: false
 #| error: false
 library(tidyverse)
-
-source(here::here("src", "_initial_settings.R"))
-source(here::here("src", "monthly_employee.R"))
-
-emp_clean <- readRDS(file = here::here("data", "employee.RDS"))
-emp_dates <- readRDS(file = here::here("data", "employee_dates.RDS"))
 ```
 
-There's a couple of ways to interpret this question.... 
-
-* We are looking to answer if we generally see a decrease in voluntary turnover as a result of higher raises
-
-* Would an increase of 6% get an employee to the general cost of living in their respective areas?
-  * Cost of living would be dependent on the employee's living situation but for the stake of this analysis we are assuming that 
-
-* Are high performers (as Exceeds or Consistently Exceeds Expectations) 
+When comparing the proposed policy of a 6% raise to the projected inflation of roughly 3% from the BLS (image of inflation projected out from the Deloite Economic Outlook). We see that a 6% raise would put an employee a few points above the projected inflation, though it's likely that many of these employees already weathered the high inflation in 2022 and 2023 without necessarily having similar raises so it is likely that they are still feeling the impacts of a few years ago.
 
 
 ## Projected CPI / Employment Cost Index
@@ -50,3 +37,4 @@ There's a couple of ways to interpret this question....
 ![](img/Deloite_EmploymentCost-CPI_Figure16.jpg)
 
 source: [Deloite Economic Outlook](https://www.deloitte.com/us/en/insights/topics/economy/us-economic-forecast/united-states-outlook-analysis.html)
+This data is originally sourced from the BLS

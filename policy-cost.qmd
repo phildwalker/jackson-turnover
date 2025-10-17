@@ -40,7 +40,7 @@ emp_clean <- readRDS(file = here::here("data", "employee.RDS")) |>
 #| error: false
 #| code-fold: true
 
-emp_clean |> 
+emp_clean |>  # filtered down to only active employees
   summarise(TotalCompensation = sum(EffectiveSalary, na.rm=T)) |> 
   ungroup() |> 
   mutate(NewComp = TotalCompensation * 1.06) |> 

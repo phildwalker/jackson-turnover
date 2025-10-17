@@ -8,39 +8,30 @@ format:
 
 
 ::: {.callout-important collapse="true"}
-## Additional Analysis: Correlation to Voluntary
+## Additional Analysis: Deteremining of correlations changed over time
 
-Want to calculate a couple of metrics
+For sake of time, I did not dig into whether or not the characteristics of the employees changed over time for those who left as well as drill into the type of termination.
 
+Another interest factor might be:
 * Time in current position
-* Want to deteremine how we want to do the pay bands
-* Want to consolidate down the Race groups
 
 :::
 
-This is where we will provide an analysis into the HRIS data in order to determine if we see if there are certain employee charatistics make are indicitive of whether or not an employee is more likely to leave.
-
-This is a space where we'd be interested to tease out the difference's between different demographics and whether or not their responses are indicitive of different behaviors.
+We are using the HRIS data to gain a deeper understanding into what characteristics of the employees might be strong correlations to whether or not an employee is terminated. 
 
 ```{r, char-init}
 #| echo: false
 #| warning: false
 #| error: false
 library(tidyverse)
-# library(correlationfunnel)
-
 source(here::here("src", "_initial_settings.R"))
-source(here::here("src", "monthly_employee.R"))
-
-emp_clean <- readRDS(file = here::here("data", "employee.RDS"))
-emp_dates <- readRDS(file = here::here("data", "employee_dates.RDS"))
 ```
 
-We are looking at the following descriptors: 
+I have grouped the employee characteristics into 3 main themes. 
 
 * Deomgraphics: 
   * Gender
-  * Race (collapsed into -> white/non-white)
+  * Race
 * Role Details:
   * Exempt vs Non-Exempt
   * Job Level
@@ -51,34 +42,63 @@ We are looking at the following descriptors:
   * Most Recent Merit
   * Compensation
 
-  
-In order to understand more about the drivers of the increases in 2022 and 2023, we will then dig into the different characteristics of our employees. 
 
 # Analysis Overview
 
 ::: panel-tabset
-## Exits:
+## Correlation Funnel: Stay or leave
 
-What population is seeing the largest impact?
-
-* Looking into the population of employees within 2022-2023 vs 2018-2022
-* We're going to use an anova to 
+From this, it looks like the biggest correlation between a employee leaving or not is based on their most recent performance rating. Outside of that, the other factors don't look to be strongly correlated.
 
 ```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| fig-height: 5
+#| fig-align: center
+
+load(here::here("img","corr_funnel_term.Rdata"))
+
+cf + 
+  theme(
+    panel.background = element_rect(fill = "#F8F5F5"),
+    plot.background = element_rect(fill = "#F8F5F5"),
+    legend.background = element_rect(fill = "#F8F5F5"),
+    legend.key = element_rect(fill = "#F8F5F5", color = "darkgrey")
+  )
 
 ```
 
 
-## Turnover rate
 
-What's the yearly turnover rates from 2018 to now
+## Correlation Funnel: Voluntary or Involuntary
+
+Again the performance rating seems to be more correlated to the type of termination (voluntary vs involuntary) 
+
+* Being rated a 1 or 2 are more correlated to involuntary termination
+* Employees who exited, who were rated a 3 or 4 tended to be the voluntary terminations 
 
 ```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| fig-height: 5
+#| fig-align: center
 
+load(here::here("img","corr_funnel_term_type.Rdata"))
+
+cf_tt + 
+  theme(
+    panel.background = element_rect(fill = "#F8F5F5"),
+    plot.background = element_rect(fill = "#F8F5F5"),
+    legend.background = element_rect(fill = "#F8F5F5"),
+    legend.key = element_rect(fill = "#F8F5F5", color = "darkgrey")
+  )
 ```
 
-## Next Steps
+## Notes
 
--   Detailing the current tur
+The correlation funnel comes from the correlationfunnel R package. It essentially performs One Hot Encoding for categorical variables or bins numeric (and then performs One Hot Encoding off those bins).
+From those variables, it then performs a correlation using the Pearson method
 
 :::
